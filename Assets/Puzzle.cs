@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class Puzzle : MonoBehaviour {
 
     List<Piece> pieces = new List<Piece>();
+    public Piece selected;
 
     List<Edge> edges = new List<Edge>();
 
@@ -26,6 +27,13 @@ public class Puzzle : MonoBehaviour {
     {
         CreateCube();
 
+        /*
+        edges.Add(edges[00].cut_edge(0.5f));
+        edges.Add(edges[02].cut_edge(0.5f));
+        edges.Add(edges[08].cut_edge(0.5f));
+        edges.Add(edges[10].cut_edge(0.5f));
+        */
+        
         edges.Add(edges[00].cut_edge(0.2f));
         edges.Add(edges[02].cut_edge(0.3f));
         edges.Add(edges[08].cut_edge(0.4f));
@@ -37,6 +45,7 @@ public class Puzzle : MonoBehaviour {
         edges.Add(edges[07].cut_edge(0.8f));
 
         edges.Add(edges[01].cut_edge(0.1f));
+
 
         Debug.Log(edges.Count);
 
@@ -52,7 +61,12 @@ public class Puzzle : MonoBehaviour {
 
     void Update()
     {
-        Debug.Log(CheckComplete());
+        //Debug.Log(CheckComplete());
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            if(selected!=null)
+                selected.RotatePiece(new Vector3(0, 1, 0));
+        }
     }
 	
     public void CreateCube()
@@ -123,6 +137,8 @@ public class Puzzle : MonoBehaviour {
                 
             }
 
+            p.SetPuzzle(this);
+
             string s = "made piece with:";
             for (int i = 0; i < p.Get_edges().Count; i++)
             {
@@ -166,10 +182,14 @@ public class Puzzle : MonoBehaviour {
     {
         foreach(Cut c in all_cuts)
         {
-            if (!c.IfCutsTouch())
+            if (!c.IfAnyCutsTouchThis(all_cuts))
+            {
+                Debug.Log("incomplete");
                 return false;
+            }
         }
 
+        Debug.Log("complete");
         return true;
     }
 }

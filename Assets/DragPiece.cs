@@ -20,6 +20,7 @@ public class DragPiece : MonoBehaviour
         screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
         Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
         offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(mousePos);
+        p.SelectPiece();
     }
 
     void OnMouseDrag()
@@ -29,4 +30,8 @@ public class DragPiece : MonoBehaviour
         p.MovePieceTo(Position);
     }
 
+    void OnMouseUp()
+    {
+        p.SnapToCut();
+    }
 }

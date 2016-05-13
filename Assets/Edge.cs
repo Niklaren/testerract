@@ -166,10 +166,21 @@ public class Edge {
         e.set_connected_edges_b(connected_edges_b);
         connected_edges_b.Clear();
 
-        Cut cut = new Cut(this, e);
-        cut.perecnt_across_orig = d; // todo if more than 1 cut across orig
-        this.set_cut_b(cut);
-        e.set_cut_a(cut);
+        GameObject cut_A = new GameObject("Cut");
+        GameObject cut_B = new GameObject("Cut");
+        
+        set_cut_b(cut_A.AddComponent<Cut>());
+        e.set_cut_a(cut_B.AddComponent<Cut>());
+
+        Get_cut_b().Set_cut_pos(cut_pos);
+        e.Get_cut_a().Set_cut_pos(cut_pos);
+
+
+        //Cut cut_a = new Cut(this);
+        //Cut cut_b = new Cut(e);
+
+        Get_cut_b().perecnt_across_orig = d; // todo if more than 1 cut across orig
+        e.Get_cut_a().perecnt_across_orig = d; // todo if more than 1 cut across orig
 
         return e;
 
@@ -222,30 +233,42 @@ public class Edge {
 
         if (cut_a != null)
         {
-            //Debug.Log("check cut a");
-            if (cut_a == e.Get_cut_a())
+            if (e.Get_cut_a() != null)
             {
-                //Debug.Log("cuts match");
-                return true;
+                //Debug.Log("check cut a");
+                if (cut_a.GetID() == e.Get_cut_a().GetID())
+                {
+                    //Debug.Log("cuts match");
+                    return true;
+                }
             }
-            else if (cut_a == e.Get_cut_b())
+            if (e.Get_cut_b() != null)
             {
-                //Debug.Log("cuts match");
-                return true;
+                if (cut_a.GetID() == e.Get_cut_b().GetID())
+                {
+                    //Debug.Log("cuts match");
+                    return true;
+                }
             }
         }
         if (cut_b != null)
         {
-            //Debug.Log("check cut b");
-            if (cut_b == e.Get_cut_a())
+            if (e.Get_cut_a() != null)
             {
-                //Debug.Log("cuts match");
-                return true;
+                //Debug.Log("check cut b");
+                if (cut_b.GetID() == e.Get_cut_a().GetID())
+                {
+                    //Debug.Log("cuts match");
+                    return true;
+                }
             }
-            else if (cut_b == e.Get_cut_b())
+            if (e.Get_cut_b() != null)
             {
-                //Debug.Log("cuts match");
-                return true;
+                if (cut_b.GetID() == e.Get_cut_b().GetID())
+                {
+                    //Debug.Log("cuts match");
+                    return true;
+                }
             }
         }
 

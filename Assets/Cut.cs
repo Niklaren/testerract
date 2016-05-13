@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Cut : MonoBehaviour {
 
@@ -9,22 +10,34 @@ public class Cut : MonoBehaviour {
 
     public float perecnt_across_orig;
 
-    Vector3 Get_cut_pos(){ return transform.position; } 
+    public Vector3 Get_cut_pos() { return transform.position; }
+    public void Set_cut_pos(Vector3 p) { transform.position = p; }
 
-    Edge edge_a;
-    Edge edge_b;
+    Edge edge;
+    public void SetEdge(Edge e) { edge = e; }
 
-    public Cut(Edge p_edge_a, Edge p_edge_b)
+    public Cut()
     {
-        ID = total_cuts++;
-        edge_a = p_edge_a;
-        edge_b = p_edge_b;
+        ID = (total_cuts++)/2;
+        Debug.Log("new cut with ID: " + ID);
     }
 
-	public bool IfCutsTouch()
+	public bool IfCutsTouch(Cut p_cut)
     {
-        if (edge_a.Get_point_b() == edge_b.Get_point_a())
-            return true;
+        if (p_cut != this)
+            if (Vector3.Distance(Get_cut_pos(),p_cut.Get_cut_pos()) < 0.01f)
+                return true;
+        return false;
+    }
+
+    public bool IfAnyCutsTouchThis(List<Cut> cuts)
+    {
+        for (int i = 0; i < cuts.Count; i++) {
+            if (IfCutsTouch(cuts[i]))
+            {
+                return true;
+            }
+        }
         return false;
     }
 }
