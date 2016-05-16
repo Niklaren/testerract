@@ -15,11 +15,17 @@ public class Cut : MonoBehaviour {
 
     Edge edge;
     public void SetEdge(Edge e) { edge = e; }
+    public Edge GetEdge() { return edge; }
 
     public Cut()
     {
         ID = (total_cuts++)/2;
         Debug.Log("new cut with ID: " + ID);
+    }
+
+    public void Destroy()
+    {
+        Destroy(gameObject);
     }
 
 	public bool IfCutsTouch(Cut p_cut)

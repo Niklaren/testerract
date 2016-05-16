@@ -6,6 +6,7 @@ public class Puzzle : MonoBehaviour {
 
     List<Piece> pieces = new List<Piece>();
     public Piece selected;
+    public Piece core;
 
     List<Edge> edges = new List<Edge>();
 
@@ -25,7 +26,7 @@ public class Puzzle : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        CreateCube();
+        CreateTess();
 
         /*
         edges.Add(edges[00].cut_edge(0.5f));
@@ -46,26 +47,67 @@ public class Puzzle : MonoBehaviour {
 
         edges.Add(edges[01].cut_edge(0.1f));
 
+        edges.Add(edges[12].cut_edge(0.3f));
+        edges.Add(edges[13].cut_edge(0.2f));
+        edges.Add(edges[14].cut_edge(0.1f));
+        edges.Add(edges[15].cut_edge(0.1f));
+
+        edges.Add(edges[16].cut_edge(0.5f));
+        edges.Add(edges[17].cut_edge(0.5f));
+        edges.Add(edges[18].cut_edge(0.5f));
+        edges.Add(edges[19].cut_edge(0.5f));
+
+        edges.Add(edges[20].cut_edge(0.5f));
+        edges.Add(edges[22].cut_edge(0.5f));
+        edges.Add(edges[24].cut_edge(0.5f));
+        edges.Add(edges[28].cut_edge(0.5f));
+        edges.Add(edges[30].cut_edge(0.5f));
+
+        edges.Add(edges[32].cut_edge(0.5f));
+
 
         Debug.Log(edges.Count);
 
         RecalculateConnectedEdges();
         RecalculatePieces();
-        RecordAllCuts();
 
         for (int i = 0; i < pieces.Count; i++)
         {
             pieces[i].CreatePieceObject();
         }
+
+        core = pieces[0];
+        core.SetCore();
+
+        RecordAllCuts();
+
+        DispersePieces();
     }
 
     void Update()
     {
-        //Debug.Log(CheckComplete());
-        if(Input.GetKeyDown(KeyCode.E))
+        if (selected != null)
         {
-            if(selected!=null)
-                selected.RotatePiece(new Vector3(0, 1, 0));
+            //Debug.Log(CheckComplete());
+            if (!Input.GetMouseButton(0))
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    selected.RotatePiece(new Vector3(0, 90, 0));
+                }
+                if (Input.GetKeyDown(KeyCode.Q))
+                {
+                    selected.RotatePiece(new Vector3(90, 0, 0));
+                }
+            }
+            else if (Input.GetMouseButton(1))
+            {
+                float deltaX = Input.GetAxis("Mouse X");
+                float deltaY = Input.GetAxis("Mouse Y");
+                Vector3 r = new Vector3(deltaY, -deltaX, 0);
+                Debug.Log("r "+ r.ToString("F4"));
+                selected.RotatePiece(r);
+            }
         }
     }
 	
@@ -91,6 +133,58 @@ public class Puzzle : MonoBehaviour {
         RecalculateConnectedEdges();
     }
 
+    public void CreateTess()
+    {
+        edges.Clear();
+
+        // inner tri 0 -11
+        edges.Add(new Edge(new Vector3(0, 0, 0), new Vector3(1, 0, 0)));
+        edges.Add(new Edge(new Vector3(1, 0, 0), new Vector3(1, 1, 0)));
+        edges.Add(new Edge(new Vector3(1, 1, 0), new Vector3(0, 1, 0)));
+        edges.Add(new Edge(new Vector3(0, 1, 0), new Vector3(0, 0, 0)));
+
+        edges.Add(new Edge(new Vector3(0, 0, 0), new Vector3(0, 0, 1)));
+        edges.Add(new Edge(new Vector3(1, 0, 0), new Vector3(1, 0, 1)));
+        edges.Add(new Edge(new Vector3(1, 1, 0), new Vector3(1, 1, 1)));
+        edges.Add(new Edge(new Vector3(0, 1, 0), new Vector3(0, 1, 1)));
+
+        edges.Add(new Edge(new Vector3(0, 0, 1), new Vector3(1, 0, 1)));
+        edges.Add(new Edge(new Vector3(1, 0, 1), new Vector3(1, 1, 1)));
+        edges.Add(new Edge(new Vector3(1, 1, 1), new Vector3(0, 1, 1)));
+        edges.Add(new Edge(new Vector3(0, 1, 1), new Vector3(0, 0, 1)));
+
+        // connectors 12 -19
+        edges.Add(new Edge(new Vector3(0, 0, 0), new Vector3(-1,-1,-1)));
+        edges.Add(new Edge(new Vector3(1, 0, 0), new Vector3(2, -1, -1)));
+        edges.Add(new Edge(new Vector3(1, 1, 0), new Vector3(2, 2, -1)));
+        edges.Add(new Edge(new Vector3(0, 1, 0), new Vector3(-1, 2, -1)));
+
+        edges.Add(new Edge(new Vector3(0, 0, 1), new Vector3(-1, -1, 2)));
+        edges.Add(new Edge(new Vector3(1, 0, 1), new Vector3(2, -1, 2)));
+        edges.Add(new Edge(new Vector3(1, 1, 1), new Vector3(2, 2, 2)));
+        edges.Add(new Edge(new Vector3(0, 1, 1), new Vector3(-1, 2, 2)));
+
+        // outer tri 20 - 31
+        edges.Add(new Edge(new Vector3(-1, -1, -1), new Vector3(2, -1, -1)));
+        edges.Add(new Edge(new Vector3(2, -1, -1), new Vector3(2, 2, -1)));
+        edges.Add(new Edge(new Vector3(2, 2, -1), new Vector3(-1, 2, -1)));
+        edges.Add(new Edge(new Vector3(-1, 2, -1), new Vector3(-1, -1, -1)));
+
+        edges.Add(new Edge(new Vector3(-1, -1, -1), new Vector3(-1, -1, 2)));
+        edges.Add(new Edge(new Vector3(2, -1, -1), new Vector3(2, -1, 2)));
+        edges.Add(new Edge(new Vector3(2, 2, -1), new Vector3(2, 2, 2)));
+        edges.Add(new Edge(new Vector3(-1, 2, -1), new Vector3(-1, 2, 2)));
+
+        edges.Add(new Edge(new Vector3(-1, -1, 2), new Vector3(2, -1, 2)));
+        edges.Add(new Edge(new Vector3(2, -1, 2), new Vector3(2, 2, 2)));
+        edges.Add(new Edge(new Vector3(2, 2, 2), new Vector3(-1, 2, 2)));
+        edges.Add(new Edge(new Vector3(-1, 2, 2), new Vector3(-1, -1, 2)));
+
+
+
+        RecalculateConnectedEdges();
+    }
+
     private void CreateRandomPuzzle()
     {
         while (pieces.Count < desired_pieces)
@@ -99,6 +193,17 @@ public class Puzzle : MonoBehaviour {
 
             // recalc pieces
 
+        }
+    }
+
+    private void DispersePieces()
+    {
+        for(int i = 1; i < pieces.Count; i++)
+        {
+            pieces[i].MovePieceDelta(new Vector3(Random.Range(-5f, 5f), Random.Range(-0.1f, 1f), Random.Range(-5f, 5f)));
+            //pieces[i].RotatePiece(new Vector3(90 * Random.Range(0, 3), 90 * Random.Range(0, 3), 0)); 
+            pieces[i].RotatePiece(new Vector3(90 * Random.Range(0, 3), 0, 0));
+            pieces[i].RotatePiece(new Vector3(0, 90 * Random.Range(0, 3), 0));
         }
     }
 
@@ -155,6 +260,7 @@ public class Puzzle : MonoBehaviour {
 
     private void RecordAllCuts()
     {
+        all_cuts.Clear();
         foreach (Edge e in edges)
         {
             Cut a = e.Get_cut_a();

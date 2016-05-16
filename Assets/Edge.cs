@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Edge {
+public class Edge : ScriptableObject {
 
     static int total_edges;
     int ID;
@@ -52,8 +52,10 @@ public class Edge {
 
     Cut cut_a;
     public Cut Get_cut_a() { return cut_a; }
+    public void Delete_cut_a() { cut_a.Destroy();  cut_a = null; }
     Cut cut_b;
     public Cut Get_cut_b() { return cut_b; }
+    public void Delete_cut_b () { cut_b.Destroy(); cut_b = null; }
 
     public float percent_of_orig = 1.0f;
 
@@ -68,6 +70,11 @@ public class Edge {
             ret.AddRange(connected_edges_b);
 
         return ret;
+    }
+
+    public void Delete()
+    {
+        Destroy(this);
     }
 
     public Edge(Vector3 p_point_a, Vector3 p_point_b)
@@ -168,9 +175,12 @@ public class Edge {
 
         GameObject cut_A = new GameObject("Cut");
         GameObject cut_B = new GameObject("Cut");
-        
+
         set_cut_b(cut_A.AddComponent<Cut>());
         e.set_cut_a(cut_B.AddComponent<Cut>());
+
+        cut_b.SetEdge(this);
+        e.Get_cut_a().SetEdge(e);
 
         Get_cut_b().Set_cut_pos(cut_pos);
         e.Get_cut_a().Set_cut_pos(cut_pos);
@@ -205,16 +215,41 @@ public class Edge {
 
     public bool join_cuts(Edge e)
     {
-        if (cut_b == e.Get_cut_a() || cut_a == e.Get_cut_b())
+        if (cut_b != null)
         {
-            // to do: logic
+            if (cut_b.GetID() == e.Get_cut_a().GetID())
+            {
+                percent_of_orig += e.percent_of_orig;
 
+                //connected_edges_b = e. // this should be done by check_connected_edge
 
-            return true;
+                Debug.Log("delete edge " + e.ID);
+                e.Delete_cut_a();
+                e.Delete();      // delete unused edge
+                Delete_cut_b();
+
+                return true;
+            }
         }
+        if (cut_a != null)
+        {
+            if (cut_a.GetID() == e.Get_cut_b().GetID())
+            {
+                percent_of_orig += e.percent_of_orig;
 
+                //connected_edges_b = e. // this should be done by check_connected_edge
+
+                Debug.Log("delete edge " + e.ID);
+                e.Delete_cut_b();
+                e.Delete();      // delete unused edge
+                Delete_cut_a();
+
+                return true;
+            }
+        }
        return false;
     }
+
     private bool SharesCutWithEdge(Edge e)
     {
         //Debug.Log("check shares cut with edge: " + ID + " and " + e.GetID());
