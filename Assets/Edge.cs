@@ -23,7 +23,7 @@ public class Edge : ScriptableObject {
             return orig_point_a + piece_offset;
         else
         {
-            Vector3 point_a = orig_point_a + ((orig_point_b - orig_point_a) * cut_a.perecnt_across_orig);
+            Vector3 point_a = orig_point_a + ((orig_point_b - orig_point_a) * cut_a.percent_across_orig);
             return point_a + piece_offset;
 
         }
@@ -38,7 +38,7 @@ public class Edge : ScriptableObject {
             return orig_point_b + piece_offset;
         else
         {
-            Vector3 point_b = orig_point_a + ((orig_point_b - orig_point_a) * cut_b.perecnt_across_orig);
+            Vector3 point_b = orig_point_a + ((orig_point_b - orig_point_a) * cut_b.percent_across_orig);
             return point_b + piece_offset;
 
         }
@@ -167,14 +167,13 @@ public class Edge : ScriptableObject {
         Edge e = new Edge(orig_point_a, orig_point_b);
         //this.point_b = cut_pos;
 
-        e.percent_of_orig = percent_of_orig * (1 - d);
-        percent_of_orig *= d;
-
         e.set_connected_edges_b(connected_edges_b);
         connected_edges_b.Clear();
 
         GameObject cut_A = new GameObject("Cut");
         GameObject cut_B = new GameObject("Cut");
+
+        //todo ib cut_b already exists -  move this cut b down and make new edge with old cut_b ??
 
         set_cut_b(cut_A.AddComponent<Cut>());
         e.set_cut_a(cut_B.AddComponent<Cut>());
@@ -185,12 +184,10 @@ public class Edge : ScriptableObject {
         Get_cut_b().Set_cut_pos(cut_pos);
         e.Get_cut_a().Set_cut_pos(cut_pos);
 
+        e.percent_of_orig = percent_of_orig * (1 - d);
+        percent_of_orig *= d;
 
-        //Cut cut_a = new Cut(this);
-        //Cut cut_b = new Cut(e);
-
-        Get_cut_b().perecnt_across_orig = d; // todo if more than 1 cut across orig
-        e.Get_cut_a().perecnt_across_orig = d; // todo if more than 1 cut across orig
+        e.Get_cut_a().percent_across_orig = Get_cut_b().percent_across_orig = 1.0f - e.percent_of_orig;
 
         return e;
 
@@ -215,7 +212,7 @@ public class Edge : ScriptableObject {
 
     public bool join_cuts(Edge e)
     {
-        if (cut_b != null)
+        if (cut_b != null && e.Get_cut_a() != null)
         {
             if (cut_b.GetID() == e.Get_cut_a().GetID())
             {
@@ -231,7 +228,7 @@ public class Edge : ScriptableObject {
                 return true;
             }
         }
-        if (cut_a != null)
+        if (cut_a != null && e.Get_cut_b() != null)
         {
             if (cut_a.GetID() == e.Get_cut_b().GetID())
             {

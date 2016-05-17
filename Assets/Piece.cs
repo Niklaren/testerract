@@ -36,6 +36,12 @@ public class Piece : MonoBehaviour {
     }
     */
 
+    public void Reset()
+    {
+        edges.Clear();
+        cuts.Clear();
+    }
+
     public void AddEdge(Edge e)
     {
         if (!edges.Contains(e))
@@ -133,7 +139,7 @@ public class Piece : MonoBehaviour {
         {
             for (int j = 0; j < all_cuts.Count; j++)
             {
-                if (cuts[i] != all_cuts[j])
+                if ((cuts[i] != all_cuts[j]) && (cuts[i].GetEdge() != all_cuts[j].GetEdge()))
                 {
                     if (Vector3.Distance(cuts[i].Get_cut_pos(), all_cuts[j].Get_cut_pos()) < 0.1f)
                     {
@@ -164,6 +170,7 @@ public class Piece : MonoBehaviour {
     {
         Debug.Log("move: " + v.ToString("F4"));
         gameObject.transform.position = (gameObject.transform.position + v);
+        gameObject.transform.
         NonRotatedPosition += v;
         puzzle.CheckComplete();
     }
@@ -175,7 +182,6 @@ public class Piece : MonoBehaviour {
         gameObject.transform.RotateAround(p,r,r.magnitude);
         RotatedDelta = transform.position - NonRotatedPosition;
         Debug.Log("RotatedDelta " + RotatedDelta.ToString("F4"));
-
         SnapToCut();
     }
 

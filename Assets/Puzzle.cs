@@ -21,11 +21,12 @@ public class Puzzle : MonoBehaviour {
     int desired_pieces;
 
     [SerializeField]
-    float random_seed;
+    int random_seed;
 
 	// Use this for initialization
 	void Start ()
     {
+        //CreateCube();
         CreateTess();
 
         /*
@@ -34,7 +35,7 @@ public class Puzzle : MonoBehaviour {
         edges.Add(edges[08].cut_edge(0.5f));
         edges.Add(edges[10].cut_edge(0.5f));
         */
-        
+        /*
         edges.Add(edges[00].cut_edge(0.2f));
         edges.Add(edges[02].cut_edge(0.3f));
         edges.Add(edges[08].cut_edge(0.4f));
@@ -64,11 +65,12 @@ public class Puzzle : MonoBehaviour {
         edges.Add(edges[30].cut_edge(0.5f));
 
         edges.Add(edges[32].cut_edge(0.5f));
+        */
 
+        CreateRandomPuzzle();
 
         Debug.Log(edges.Count);
 
-        RecalculateConnectedEdges();
         RecalculatePieces();
 
         for (int i = 0; i < pieces.Count; i++)
@@ -91,22 +93,27 @@ public class Puzzle : MonoBehaviour {
             //Debug.Log(CheckComplete());
             if (!Input.GetMouseButton(0))
             {
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetKeyDown(KeyCode.Alpha1))
                 {
                     selected.RotatePiece(new Vector3(0, 90, 0));
                 }
-                if (Input.GetKeyDown(KeyCode.Q))
+                if (Input.GetKeyDown(KeyCode.Alpha2))
                 {
                     selected.RotatePiece(new Vector3(90, 0, 0));
                 }
-            }
-            else if (Input.GetMouseButton(1))
-            {
-                float deltaX = Input.GetAxis("Mouse X");
-                float deltaY = Input.GetAxis("Mouse Y");
-                Vector3 r = new Vector3(deltaY, -deltaX, 0);
-                Debug.Log("r "+ r.ToString("F4"));
-                selected.RotatePiece(r);
+                if (Input.GetKeyDown(KeyCode.Alpha3))
+                {
+                    selected.RotatePiece(new Vector3(0, 0, 90));
+                }
+
+                if (Input.GetMouseButton(1))
+                {
+                    float deltaX = Input.GetAxis("Mouse X");
+                    float deltaY = Input.GetAxis("Mouse Y");
+                    Vector3 r = new Vector3(deltaY, -deltaX, 0);
+                    Debug.Log("r " + r.ToString("F4"));
+                    selected.RotatePiece(r);
+                }
             }
         }
     }
@@ -187,12 +194,23 @@ public class Puzzle : MonoBehaviour {
 
     private void CreateRandomPuzzle()
     {
+        ShuffleBag s = new ShuffleBag(edges.Count);
+        for (int i = 0; i < edges.Count; i++)
+            s.Add(i, 1); //2 for dbl cuts? // that's no good! dont do that!!
+
+        if (random_seed!=0)
+            Random.seed = random_seed;
+
         while (pieces.Count < desired_pieces)
         {
             // cut random edge at a random distance along
 
+            int edgeToCut = s.Next();
+            float distToCut = Random.Range(0.1f, 0.9f);
+            edges.Add(edges[edgeToCut].cut_edge(distToCut));
+            // s.Add(edges.Count,1);
             // recalc pieces
-
+            RecalculatePieces();
         }
     }
 
@@ -221,13 +239,24 @@ public class Puzzle : MonoBehaviour {
 
     private void RecalculatePieces()
     {
-        pieces.Clear();
+        RecalculateConnectedEdges();
+
+        //pieces.Clear();
         List<Edge> unvisited = new List<Edge>(edges);
+
+        int piece_index = 0;
 
         while (unvisited.Count > 0)
         {
             //MakePiece(unvisited[0]);
-            Piece p = Instantiate(piece_object).GetComponent<Piece>(); //new Piece();
+            Piece p;
+            if (piece_index >= pieces.Count) {
+                p = Instantiate(piece_object).GetComponent<Piece>(); //p = new Piece();
+            } else {
+                p = pieces[piece_index];
+                p.Reset();
+            }
+
             p.AddEdge(unvisited[0]);
 
             for (int i = 0; i < p.Get_edges().Count; i++)
@@ -235,8 +264,8 @@ public class Puzzle : MonoBehaviour {
                 unvisited.Remove(p.Get_edges()[i]);
                 for (int j = 0; j < p.Get_edges()[i].Get_connected_edges().Count; j++)
                 {
-                    if (!p.Get_edges().Contains(p.Get_edges()[i].Get_connected_edges()[j])) {
-                        p.AddEdge(p.Get_edges()[i].Get_connected_edges()[j]);
+                    if (!p.Get_edges().Contains(p.Get_edges()[i].Get_connected_edges()[j])) {   // if piece doesn't contain connected edge
+                        p.AddEdge(p.Get_edges()[i].Get_connected_edges()[j]);                   // add edge to piece
                     }
                 }
                 
@@ -252,7 +281,9 @@ public class Puzzle : MonoBehaviour {
             }
             Debug.Log(s);
 
-            pieces.Add(p);
+            if(!pieces.Contains(p))
+                pieces.Add(p);
+            piece_index++;
         }
 
         Debug.Log(pieces.Count);

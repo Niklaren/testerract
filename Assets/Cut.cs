@@ -8,7 +8,7 @@ public class Cut : MonoBehaviour {
     int ID;
     public int GetID() { return ID;}
 
-    public float perecnt_across_orig;
+    public float percent_across_orig;
 
     public Vector3 Get_cut_pos() { return transform.position; }
     public void Set_cut_pos(Vector3 p) { transform.position = p; }
