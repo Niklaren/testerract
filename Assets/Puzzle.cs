@@ -106,14 +106,14 @@ public class Puzzle : MonoBehaviour {
                     selected.RotatePiece(new Vector3(0, 0, 90));
                 }
 
-                if (Input.GetMouseButton(1))
+                /*if (Input.GetMouseButton(1))
                 {
                     float deltaX = Input.GetAxis("Mouse X");
                     float deltaY = Input.GetAxis("Mouse Y");
                     Vector3 r = new Vector3(deltaY, -deltaX, 0);
                     Debug.Log("r " + r.ToString("F4"));
                     selected.RotatePiece(r);
-                }
+                }*/
             }
         }
     }
@@ -321,12 +321,12 @@ public class Puzzle : MonoBehaviour {
         {
             if (!c.IfAnyCutsTouchThis(all_cuts))
             {
-                Debug.Log("incomplete");
+                //Debug.Log("incomplete");
                 return false;
             }
         }
 
-        Debug.Log("complete");
+        //Debug.Log("complete");
         return true;
     }
 }

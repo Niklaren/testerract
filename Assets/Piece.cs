@@ -74,17 +74,19 @@ public class Piece : MonoBehaviour {
             if (edges[i].Get_cut_a() != null)
             {
                 edges[i].Get_cut_a().gameObject.transform.SetParent(EdgeObject.transform);
+                edges[i].Get_cut_a().SetAlignment(EdgeObject.transform);
             }
             if (edges[i].Get_cut_b() != null)
             {
                 edges[i].Get_cut_b().gameObject.transform.SetParent(EdgeObject.transform);
+                edges[i].Get_cut_b().SetAlignment(EdgeObject.transform);
             }
         } 
     }
 
     private void JoinUnusedCuts()
     {
-        Debug.Log("try join unused");
+        //Debug.Log("try join unused");
         foreach (Cut c1 in cuts)
         {
             foreach (Cut c2 in cuts)
@@ -93,7 +95,7 @@ public class Piece : MonoBehaviour {
                 {
                     if(c1.GetID() == c2.GetID())
                     {
-                        Debug.Log("try joining now");
+                        //Debug.Log("try joining now");
                         c1.GetEdge().join_cuts(c2.GetEdge());
                     }
                 }
@@ -143,11 +145,53 @@ public class Piece : MonoBehaviour {
                 {
                     if (Vector3.Distance(cuts[i].Get_cut_pos(), all_cuts[j].Get_cut_pos()) < 0.1f)
                     {
-                        Vector3 d = all_cuts[j].Get_cut_pos() - cuts[i].Get_cut_pos();
-                        Debug.Log("this cut at " + cuts[i].Get_cut_pos().ToString("F4"));
-                        Debug.Log("other cut at " + all_cuts[j].Get_cut_pos().ToString("F4"));
-                        Debug.Log("move: " + d.ToString("F4"));
-                        MovePieceDelta(d);
+                        //Debug.Log("this cut loc rot eul at " + cuts[i].transform.localEulerAngles.ToString("F4"));
+                        //Debug.Log("this cut rot eul at " + cuts[i].transform.rotation.eulerAngles.ToString("F4"));
+                        //Debug.Log("this cut rot quat at " + cuts[i].transform.rotation.ToString("F4"));
+                        Debug.Log("this cut FORWARD " + cuts[i].transform.forward.ToString("F4"));
+                        Debug.Log("this cut FORWARD mag " + cuts[i].transform.forward.magnitude.ToString("F4"));
+                        //Debug.Log("other cut loc rot eul at " + all_cuts[j].transform.localEulerAngles.ToString("F4"));
+                        // Debug.Log("other cut rot eul at " + all_cuts[j].transform.rotation.eulerAngles.ToString("F4"));
+                        //Debug.Log("other cut rot quat at " + all_cuts[j].transform.rotation.ToString("F4"));
+                        Debug.Log("other cut FORWARD " + all_cuts[j].transform.forward.ToString("F4"));
+                        Debug.Log("other cut FORWARD mag " + all_cuts[j].transform.forward.magnitude.ToString("F4"));
+
+                        //cuts[i].transform.forward = -all_cuts[j].transform.forward;
+
+                        Vector3 iF = -cuts[i].transform.forward;
+                        Vector3 jF = all_cuts[j].transform.forward;
+                        float tolerance = 1.1f;
+                        if ((Mathf.Abs(iF.x - jF.x) < tolerance) && (Mathf.Abs(iF.x - jF.x) < tolerance) && (Mathf.Abs(iF.x - jF.x) < tolerance))
+                        {
+                            // to do angle to rotate between the 2 vectors
+                            // look this up later :3
+                            /*float a = Vector3.Angle(iF, jF);
+                            Vector3 dif = iF - jF;
+                            Debug.Log("dif "+ dif);
+                            Debug.Log("angle " + a);
+
+                            Vector3 difx = new Vector3(dif.x, 0, 0);
+                            Vector3 dify = new Vector3(0, dif.y, 0);
+                            Vector3 difz = new Vector3(0, 0, dif.z);
+
+                            Vector3 p = NonRotatedPosition + LocalCentre;
+                            //gameObject.transform.Rotate(dif.normalized, a);
+                            gameObject.transform.RotateAround(p, difx, a);
+                            gameObject.transform.RotateAround(p, dify, a);
+                            gameObject.transform.RotateAround(p, difz, a);*/
+
+                            //Vector3 axis = Vector3.Cross(jF, iF);
+                            //float angle = Vector3.Angle(jF, iF);
+                            //cuts[i].gameObject.transform.Rotate(axis, angle);
+                        }
+
+                        //Vector3 d = all_cuts[j].Get_cut_pos() - cuts[i].Get_cut_pos();
+                        //Debug.Log("this cut at " + cuts[i].Get_cut_pos().ToString("F4"));
+                        //Debug.Log("other cut at " + all_cuts[j].Get_cut_pos().ToString("F4"));
+                        //Debug.Log("move: " + d.ToString("F4"));
+                        //MovePieceDelta(d);
+
+                        
                         return;
                     }
                 }
@@ -168,9 +212,9 @@ public class Piece : MonoBehaviour {
 
     public void MovePieceDelta(Vector3 v)
     {
-        Debug.Log("move: " + v.ToString("F4"));
+        //Debug.Log("move: " + v.ToString("F4"));
         gameObject.transform.position = (gameObject.transform.position + v);
-        gameObject.transform.
+        //gameObject.transform.
         NonRotatedPosition += v;
         puzzle.CheckComplete();
     }
@@ -178,10 +222,10 @@ public class Piece : MonoBehaviour {
     public void RotatePiece(Vector3 r)
     {
         Vector3 p = NonRotatedPosition + LocalCentre;
-        Debug.Log("Rotated Around " + p.ToString("F4") + "with loc pos " + LocalCentre.ToString("F4") + "and non-rotated pos " + NonRotatedPosition.ToString("F4"));
+        //Debug.Log("Rotated Around " + p.ToString("F4") + "with loc pos " + LocalCentre.ToString("F4") + "and non-rotated pos " + NonRotatedPosition.ToString("F4"));
         gameObject.transform.RotateAround(p,r,r.magnitude);
         RotatedDelta = transform.position - NonRotatedPosition;
-        Debug.Log("RotatedDelta " + RotatedDelta.ToString("F4"));
+        //Debug.Log("RotatedDelta " + RotatedDelta.ToString("F4"));
         SnapToCut();
     }
 

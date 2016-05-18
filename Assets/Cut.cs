@@ -23,6 +23,11 @@ public class Cut : MonoBehaviour {
         Debug.Log("new cut with ID: " + ID);
     }
 
+    public void SetAlignment(Transform t)
+    {
+        transform.LookAt(t);
+    }
+
     public void Destroy()
     {
         Destroy(gameObject);
@@ -46,4 +51,6 @@ public class Cut : MonoBehaviour {
         }
         return false;
     }
+
+
 }
