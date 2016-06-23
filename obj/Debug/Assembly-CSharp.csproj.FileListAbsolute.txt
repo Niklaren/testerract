@@ -20,3 +20,4 @@ C:\Users\nick.taylor\Documents\Unity Projects\testerract\Temp\bin\Debug\UnityEng
 C:\Users\nick.taylor\Documents\Unity Projects\testerract\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 C:\Users\nick.taylor\Documents\Unity Projects\testerract\obj\Debug\Assembly-CSharp.dll
 C:\Users\nick.taylor\Documents\Unity Projects\testerract\obj\Debug\Assembly-CSharp.pdb
+C:\Users\nick.taylor\Documents\Unity Projects\testerract\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb

@@ -19,12 +19,27 @@ public class Piece : MonoBehaviour {
     Puzzle puzzle;
     public void SetPuzzle(Puzzle p) { puzzle = p; }
     bool core = false;
+    public bool selected = false;
 
     //GameObject PieceObject;
-    public Vector3 GetPosition() { return gameObject.transform.position; }
-    Vector3 NonRotatedPosition;
+    public Vector3 GetPosition() { return NonRotatedPosition + LocalCentre; }//gameObject.transform.position; }
     Vector3 RotatedDelta;
     Vector3 LocalCentre;
+    Vector3 NonRotatedPosition;
+
+    private Rigidbody rb;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+        //Physics.IgnoreLayerCollision(8, 9, true);
+    }
+
+    private void Start()
+    {
+        if (puzzle == null)
+            puzzle = FindObjectOfType<Puzzle>();
+    }
 
     /*
     public void Update()
@@ -51,18 +66,18 @@ public class Piece : MonoBehaviour {
         }
     }
 
-    public void CreatePieceObject()
+    public Piece CreatePieceObject()
     {
         RecordCuts();
         JoinUnusedCuts();
         RecordCuts();
-        RecordPositioning();
+        RecordCentre();
 
         for (int i = 0; i < edges.Count; i++)
         {
             GameObject EdgeObject = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
 
-            EdgeObject.transform.position = edges[i].Get_Position();   //Get_point_a();  //
+            EdgeObject.transform.position = edges[i].Get_Position()-LocalCentre;   //Get_point_a();  //
             EdgeObject.transform.up = edges[i].Get_point_b() - edges[i].Get_point_a();
             EdgeObject.transform.localScale = new Vector3(0.1f, Vector3.Distance(edges[i].Get_point_a(), edges[i].Get_point_b()) / 2, 0.1f);
 
@@ -81,7 +96,8 @@ public class Piece : MonoBehaviour {
                 edges[i].Get_cut_b().gameObject.transform.SetParent(EdgeObject.transform);
                 edges[i].Get_cut_b().SetAlignment(EdgeObject.transform);
             }
-        } 
+        }
+        return this;
     }
 
     private void JoinUnusedCuts()
@@ -121,7 +137,7 @@ public class Piece : MonoBehaviour {
         }
     }
 
-    private void RecordPositioning()
+    private void RecordCentre()
     {
         LocalCentre = Vector3.zero;
         foreach (Edge e in edges)
@@ -130,7 +146,9 @@ public class Piece : MonoBehaviour {
         }
         LocalCentre /= edges.Count;
 
-        LocalCentre += transform.position;
+        //LocalCentre += transform.position;
+
+        gameObject.transform.position = LocalCentre;
     }
 
     public void SnapToCut()
@@ -149,14 +167,16 @@ public class Piece : MonoBehaviour {
                         //Debug.Log("this cut rot eul at " + cuts[i].transform.rotation.eulerAngles.ToString("F4"));
                         //Debug.Log("this cut rot quat at " + cuts[i].transform.rotation.ToString("F4"));
                         Debug.Log("this cut FORWARD " + cuts[i].transform.forward.ToString("F4"));
-                        Debug.Log("this cut FORWARD mag " + cuts[i].transform.forward.magnitude.ToString("F4"));
+                        //Debug.Log("this cut FORWARD mag " + cuts[i].transform.forward.magnitude.ToString("F4"));
                         //Debug.Log("other cut loc rot eul at " + all_cuts[j].transform.localEulerAngles.ToString("F4"));
                         // Debug.Log("other cut rot eul at " + all_cuts[j].transform.rotation.eulerAngles.ToString("F4"));
                         //Debug.Log("other cut rot quat at " + all_cuts[j].transform.rotation.ToString("F4"));
                         Debug.Log("other cut FORWARD " + all_cuts[j].transform.forward.ToString("F4"));
-                        Debug.Log("other cut FORWARD mag " + all_cuts[j].transform.forward.magnitude.ToString("F4"));
+                        //Debug.Log("other cut FORWARD mag " + all_cuts[j].transform.forward.magnitude.ToString("F4"));
 
                         //cuts[i].transform.forward = -all_cuts[j].transform.forward;
+
+                        all_cuts[j].GetEdge().GetPiece().RoundTo90();
 
                         Vector3 iF = -cuts[i].transform.forward;
                         Vector3 jF = all_cuts[j].transform.forward;
@@ -180,16 +200,30 @@ public class Piece : MonoBehaviour {
                             gameObject.transform.RotateAround(p, dify, a);
                             gameObject.transform.RotateAround(p, difz, a);*/
 
-                            //Vector3 axis = Vector3.Cross(jF, iF);
-                            //float angle = Vector3.Angle(jF, iF);
-                            //cuts[i].gameObject.transform.Rotate(axis, angle);
+                            //Vector3 iiF = new Vector3(0, 1, 0);
+                            //Vector3 jjF = new Vector3(0, 1, 0);
+
+                            Vector3 axis = Vector3.Cross(iF, jF);
+                            Debug.Log("axis: " + axis);
+                            float angle = Vector3.Angle(iF, jF);
+                            Debug.Log("angle: " + angle);
+
+                            //cuts[i].gameObject.transform.Rotate(axis, angle, Space.World);
+                            Debug.Log(gameObject.transform.position.ToString("f4"));
+
+                            gameObject.transform.Rotate(axis, angle, Space.World);
+
+                            RoundTo90();
+
+                            RotatedDelta = transform.position - NonRotatedPosition;
+                            
                         }
 
-                        //Vector3 d = all_cuts[j].Get_cut_pos() - cuts[i].Get_cut_pos();
+                        Vector3 d = all_cuts[j].Get_cut_pos() - cuts[i].Get_cut_pos();
                         //Debug.Log("this cut at " + cuts[i].Get_cut_pos().ToString("F4"));
                         //Debug.Log("other cut at " + all_cuts[j].Get_cut_pos().ToString("F4"));
                         //Debug.Log("move: " + d.ToString("F4"));
-                        //MovePieceDelta(d);
+                        MovePieceDelta(d);
 
                         
                         return;
@@ -205,8 +239,10 @@ public class Piece : MonoBehaviour {
         {
             gameObject.transform.position = v;
             //gameObject.transform.position += RotatedDelta;
+            gameObject.transform.position -= LocalCentre;
+
             //SnapToCut();
-            NonRotatedPosition = v - RotatedDelta;
+            NonRotatedPosition = v + RotatedDelta;
         }
     }
 
@@ -219,14 +255,68 @@ public class Piece : MonoBehaviour {
         puzzle.CheckComplete();
     }
 
-    public void RotatePiece(Vector3 r)
+    public void RotatePiece(Vector3 r, float angle)
     {
-        Vector3 p = NonRotatedPosition + LocalCentre;
-        //Debug.Log("Rotated Around " + p.ToString("F4") + "with loc pos " + LocalCentre.ToString("F4") + "and non-rotated pos " + NonRotatedPosition.ToString("F4"));
-        gameObject.transform.RotateAround(p,r,r.magnitude);
-        RotatedDelta = transform.position - NonRotatedPosition;
-        //Debug.Log("RotatedDelta " + RotatedDelta.ToString("F4"));
-        SnapToCut();
+        //Vector3 p = NonRotatedPosition + LocalCentre;
+        ////Debug.Log("Rotated Around " + p.ToString("F4") + "with loc pos " + LocalCentre.ToString("F4") + "and non-rotated pos " + NonRotatedPosition.ToString("F4"));
+        //gameObject.transform.RotateAround(p,r,angle);
+        //RotatedDelta = transform.position - NonRotatedPosition;
+        ////Debug.Log("RotatedDelta " + RotatedDelta.ToString("F4"));
+
+        //Vector3 p1 = transform.position;
+        //transform.position = Vector3.zero;
+        //transform.position -= LocalCentre;
+        transform.Rotate(r, angle, Space.World);
+        //transform.position += LocalCentre;
+        //transform.position += p1;
+
+    }
+
+    public void ResetRotation()
+    {
+        gameObject.transform.eulerAngles = new Vector3(0, 0, 0);
+        Debug.Log(gameObject.transform.eulerAngles);
+        RotatedDelta = Vector3.zero;
+    }
+
+    public void RoundTo90()
+    {
+        //Vector3 p1 = gameObject.transform.position;
+
+        Vector3 roundME = gameObject.transform.eulerAngles;
+        roundME.x = Mathf.Round(roundME.x / 90) * 90;
+        roundME.y = Mathf.Round(roundME.y / 90) * 90;
+        roundME.z = Mathf.Round(roundME.z / 90) * 90;
+        gameObject.transform.eulerAngles = roundME;
+
+        //Debug.Log("angles should be snapped to 90 " + gameObject.transform.eulerAngles.ToString("f4"));
+
+        //Vector3 p2 = gameObject.transform.position;
+
+        //Vector3 diff = p1 - p2;
+
+        //gameObject.transform.position += diff;
+
+    }
+
+    public void RoundToWhole()
+    {
+        //Vector3 p1 = gameObject.transform.position;
+
+        Vector3 roundME = gameObject.transform.eulerAngles;
+        roundME.x = Mathf.Round(roundME.x);
+        roundME.y = Mathf.Round(roundME.y );
+        roundME.z = Mathf.Round(roundME.z);
+        gameObject.transform.eulerAngles = roundME;
+
+        Debug.Log("angles should be snapped to 1 " + gameObject.transform.eulerAngles.ToString("f4"));
+
+        //Vector3 p2 = gameObject.transform.position;
+
+        //Vector3 diff = p1 - p2;
+
+        //gameObject.transform.position += diff;
+
     }
 
     public void SelectPiece()
@@ -239,22 +329,30 @@ public class Piece : MonoBehaviour {
     private void DoDeSelection()
     {
         puzzle.selected = null;
+        selected = false;
         MeshRenderer[] MRs = GetComponentsInChildren<MeshRenderer>();
         foreach(var mr in MRs)
         {
             mr.material = mat_default;
         }
+
+        //rb.isKinematic = false;
+        //rb.constraints = RigidbodyConstraints.None;
     }
     private void DoSelection()
     {
         if (!core)
         {
             puzzle.selected = this;
+            selected = true;
             MeshRenderer[] MRs = GetComponentsInChildren<MeshRenderer>();
             foreach (var mr in MRs)
             {
                 mr.material = mat_selected;
             }
+
+            //rb.isKinematic = true;
+            //rb.constraints = RigidbodyConstraints.FreezeAll;
         }
     }
     public void SetCore()
@@ -265,5 +363,7 @@ public class Piece : MonoBehaviour {
         {
             mr.material = mat_core;
         }
+        //rb.isKinematic = true;
+        //rb.constraints = RigidbodyConstraints.FreezeAll;
     }
 }

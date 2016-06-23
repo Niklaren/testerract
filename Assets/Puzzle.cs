@@ -26,6 +26,7 @@ public class Puzzle : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+
         //CreateCube();
         CreateTess();
 
@@ -35,7 +36,7 @@ public class Puzzle : MonoBehaviour {
         edges.Add(edges[08].cut_edge(0.5f));
         edges.Add(edges[10].cut_edge(0.5f));
         */
-        /*
+
         edges.Add(edges[00].cut_edge(0.2f));
         edges.Add(edges[02].cut_edge(0.3f));
         edges.Add(edges[08].cut_edge(0.4f));
@@ -65,9 +66,9 @@ public class Puzzle : MonoBehaviour {
         edges.Add(edges[30].cut_edge(0.5f));
 
         edges.Add(edges[32].cut_edge(0.5f));
-        */
 
-        CreateRandomPuzzle();
+
+        //CreateRandomPuzzle();
 
         Debug.Log(edges.Count);
 
@@ -75,7 +76,7 @@ public class Puzzle : MonoBehaviour {
 
         for (int i = 0; i < pieces.Count; i++)
         {
-            pieces[i].CreatePieceObject();
+            pieces[i].CreatePieceObject().gameObject.transform.SetParent(transform);
         }
 
         core = pieces[0];
@@ -83,11 +84,20 @@ public class Puzzle : MonoBehaviour {
 
         RecordAllCuts();
 
-        DispersePieces();
+        //DispersePieces();
     }
 
     void Update()
     {
+        if (Input.GetMouseButton(0))
+        {
+            if (Cursor.lockState != CursorLockMode.Locked)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+        }
+
         if (selected != null)
         {
             //Debug.Log(CheckComplete());
@@ -95,25 +105,81 @@ public class Puzzle : MonoBehaviour {
             {
                 if (Input.GetKeyDown(KeyCode.Alpha1))
                 {
-                    selected.RotatePiece(new Vector3(0, 90, 0));
+                    Vector3 AB = Camera.main.transform.position - selected.transform.position;
+                    if (Mathf.Abs(AB.x) > Mathf.Abs(AB.z))
+                    {
+                        selected.RotatePiece(new Vector3(0, 0, 1 * AB.x), 90);
+                    }
+                    else
+                    {
+                        selected.RotatePiece(new Vector3(-1 * AB.z, 0, 0), 90);
+                    }
+                    selected.RoundTo90();
+                    selected.SnapToCut();
+                }
+                else if (Input.GetKeyDown(KeyCode.Q))
+                {
+                    Vector3 AB = Camera.main.transform.position - selected.transform.position;
+                    if (Mathf.Abs(AB.x) > Mathf.Abs(AB.z))
+                    {
+                        selected.RotatePiece(new Vector3(0, 0, -1 * AB.x), 90);
+                    }
+                    else
+                    {
+                        selected.RotatePiece(new Vector3(1 * AB.z, 0, 0), 90);
+                    }
+                    selected.RoundTo90();
+                    selected.SnapToCut();
                 }
                 if (Input.GetKeyDown(KeyCode.Alpha2))
                 {
-                    selected.RotatePiece(new Vector3(90, 0, 0));
+                    selected.RotatePiece(new Vector3(0, 1, 0), 90);
+                    selected.RoundTo90();
+                    selected.SnapToCut();
                 }
-                if (Input.GetKeyDown(KeyCode.Alpha3))
+                else if (Input.GetKeyDown(KeyCode.Alpha3))
                 {
-                    selected.RotatePiece(new Vector3(0, 0, 90));
+                    selected.RotatePiece(new Vector3(0, -1, 0), 90);
+                    selected.RoundTo90();
+                    selected.SnapToCut();
+                }
+                else if (Input.GetKeyDown(KeyCode.R))
+                {
+                    selected.ResetRotation();
+                }
+                else if (Input.GetKeyDown(KeyCode.T))
+                {
+                    selected.RoundTo90();
                 }
 
-                /*if (Input.GetMouseButton(1))
+                if (Input.GetMouseButton(1))
                 {
                     float deltaX = Input.GetAxis("Mouse X");
                     float deltaY = Input.GetAxis("Mouse Y");
-                    Vector3 r = new Vector3(deltaY, -deltaX, 0);
-                    Debug.Log("r " + r.ToString("F4"));
-                    selected.RotatePiece(r);
-                }*/
+                    Debug.Log("a");
+                    if (Mathf.Abs(deltaX) > Mathf.Abs(deltaY))
+                    {
+                        Debug.Log("a1");
+                        //Vector3 r = new Vector3(0, -deltaX, 0);
+                        Vector3 axis = new Vector3(0, 1, 0);
+                        //Debug.Log("xyz rot " + deltaXYZ.ToString("F4"));
+                        //float a = Vector3.Angle(Vector3.zero, deltaXYZ);
+                        selected.RotatePiece(axis, -deltaX);
+                    }
+                    else if (Mathf.Abs(deltaY) > Mathf.Abs(deltaX))
+                    {
+                        Debug.Log("a2");
+                        Vector3 AB = Camera.main.transform.position - selected.transform.position;
+
+                        Vector3 cross = Vector3.Cross(Vector3.up, AB);
+                        //float a = Vector3.Angle(Vector3.up, AB);w
+
+                        selected.RotatePiece(cross, -deltaY);
+                    }
+
+                    //selected.SnapToCut();
+
+                }
             }
         }
     }
@@ -218,10 +284,10 @@ public class Puzzle : MonoBehaviour {
     {
         for(int i = 1; i < pieces.Count; i++)
         {
-            pieces[i].MovePieceDelta(new Vector3(Random.Range(-5f, 5f), Random.Range(-0.1f, 1f), Random.Range(-5f, 5f)));
-            //pieces[i].RotatePiece(new Vector3(90 * Random.Range(0, 3), 90 * Random.Range(0, 3), 0)); 
-            pieces[i].RotatePiece(new Vector3(90 * Random.Range(0, 3), 0, 0));
-            pieces[i].RotatePiece(new Vector3(0, 90 * Random.Range(0, 3), 0));
+            pieces[i].MovePieceDelta(new Vector3(Random.Range(-5f, 5f), Random.Range(0f, 1f), Random.Range(-5f, 5f)));
+            pieces[i].RotatePiece(new Vector3(Random.Range(0, 3), 0, 0),90); 
+            //pieces[i].RotatePiece(new Vector3(Random.Range(0, 3), Random.Range(0, 3), Random.Range(0, 3)),90);
+            pieces[i].RotatePiece(new Vector3(0, Random.Range(0, 3), 0),90);
         }
     }
 

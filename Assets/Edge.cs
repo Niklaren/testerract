@@ -17,7 +17,7 @@ public class Edge : ScriptableObject {
     {
         Vector3 piece_offset = Vector3.zero;
         if (belongsTo != null)
-            piece_offset = belongsTo.GetPosition();
+            piece_offset = belongsTo.transform.position;
 
         if (cut_a == null)
             return orig_point_a + piece_offset;
@@ -32,7 +32,7 @@ public class Edge : ScriptableObject {
     {
         Vector3 piece_offset = Vector3.zero;
         if (belongsTo != null)
-            piece_offset = belongsTo.GetPosition();
+            piece_offset = belongsTo.transform.position;
 
         if (cut_b == null)
             return orig_point_b + piece_offset;

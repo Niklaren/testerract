@@ -9,29 +9,56 @@ public class DragPiece : MonoBehaviour
 
     [SerializeField]
     private Piece p;
+    private Camera cam;
 
     void Start()
     {
         p = GetComponent<Piece>();
+        cam = Camera.main;
     }
 
-        void OnMouseDown()
+    void OnMouseDown()
     {
-        screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+        if (Vector3.Distance(cam.transform.position, p.transform.position) < 4)
+        {
+            p.SelectPiece();
+            if (p.selected)
+            {
+                Vector3 Position = (cam.gameObject.transform.position + (cam.gameObject.transform.forward * 2));
+
+
+                //p.MovePieceTo(Position);
+                p.transform.SetParent(cam.transform);
+            }
+        }
+        /*screenPoint = cam.WorldToScreenPoint(gameObject.transform.position);
         Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
-        offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(mousePos);
-        p.SelectPiece();
+        offset = gameObject.transform.position - cam.ScreenToWorldPoint(mousePos);
+        p.SelectPiece();*/
     }
 
     void OnMouseDrag()
     {
-        Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
-        Vector3 Position = Camera.main.ScreenToWorldPoint(mousePos) + offset;
-        p.MovePieceTo(Position);
+        if (p.selected)
+        {
+            //Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
+            //Vector3 Position = cam.ScreenToWorldPoint(mousePos) + offset;
+            //Vector3 Position = (cam.gameObject.transform.position + (cam.gameObject.transform.forward*2));
+
+            //p.transform.position = Position;
+            //p.MovePieceTo(Position);
+        }
+        /*Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
+        Vector3 Position = cam.ScreenToWorldPoint(mousePos) + offset;
+        p.MovePieceTo(Position);*/
     }
 
     void OnMouseUp()
     {
-        p.SnapToCut();
+        if (p.selected)
+        {
+            p.SnapToCut();
+            p.transform.parent = null;
+        }
     }
 }
