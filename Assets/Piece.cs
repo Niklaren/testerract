@@ -151,7 +151,27 @@ public class Piece : MonoBehaviour {
         gameObject.transform.position = LocalCentre;
     }
 
+    public bool IsPieceConnected()
+    {
+        for(int i = 0; i < cuts.Count; i++)
+        {
+            if(cuts[i].IfAnyCutsTouchThis(puzzle.Get_all_cuts()))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public void SnapToCut()
+    {
+        CheckForSnap();
+
+        puzzle.ConfigurePiecePhysics();
+    }
+
+    private void CheckForSnap()
     {
         List<Cut> all_cuts = puzzle.Get_all_cuts();
 
@@ -216,7 +236,7 @@ public class Piece : MonoBehaviour {
                             RoundTo90();
 
                             RotatedDelta = transform.position - NonRotatedPosition;
-                            
+
                         }
 
                         Vector3 d = all_cuts[j].Get_cut_pos() - cuts[i].Get_cut_pos();
@@ -225,7 +245,7 @@ public class Piece : MonoBehaviour {
                         //Debug.Log("move: " + d.ToString("F4"));
                         MovePieceDelta(d);
 
-                        
+
                         return;
                     }
                 }
@@ -319,6 +339,18 @@ public class Piece : MonoBehaviour {
 
     }
 
+    public void Freeze()
+    {
+        rb.isKinematic = true;
+        rb.constraints = RigidbodyConstraints.FreezeAll;
+    }
+
+    public void UnFreeze()
+    {
+        rb.isKinematic = false;
+        rb.constraints = RigidbodyConstraints.None;
+    }
+
     public void SelectPiece()
     {
         if(puzzle.selected != null)
@@ -336,8 +368,7 @@ public class Piece : MonoBehaviour {
             mr.material = mat_default;
         }
 
-        //rb.isKinematic = false;
-        //rb.constraints = RigidbodyConstraints.None;
+
     }
     private void DoSelection()
     {
@@ -351,8 +382,7 @@ public class Piece : MonoBehaviour {
                 mr.material = mat_selected;
             }
 
-            //rb.isKinematic = true;
-            //rb.constraints = RigidbodyConstraints.FreezeAll;
+            Freeze();
         }
     }
     public void SetCore()
@@ -363,7 +393,7 @@ public class Piece : MonoBehaviour {
         {
             mr.material = mat_core;
         }
-        //rb.isKinematic = true;
-        //rb.constraints = RigidbodyConstraints.FreezeAll;
+
+        Freeze();
     }
 }

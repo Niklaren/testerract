@@ -24,7 +24,7 @@ public class DragPiece : MonoBehaviour
             p.SelectPiece();
             if (p.selected)
             {
-                Vector3 Position = (cam.gameObject.transform.position + (cam.gameObject.transform.forward * 2));
+                //Vector3 Position = (cam.gameObject.transform.position + (cam.gameObject.transform.forward * 2));
 
 
                 //p.MovePieceTo(Position);

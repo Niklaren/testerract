@@ -85,6 +85,8 @@ public class Puzzle : MonoBehaviour {
         RecordAllCuts();
 
         //DispersePieces();
+
+        ConfigurePiecePhysics();
     }
 
     void Update()
@@ -101,7 +103,7 @@ public class Puzzle : MonoBehaviour {
         if (selected != null)
         {
             //Debug.Log(CheckComplete());
-            if (!Input.GetMouseButton(0))
+            //if (!Input.GetMouseButton(0))
             {
                 if (Input.GetKeyDown(KeyCode.Alpha1))
                 {
@@ -115,7 +117,7 @@ public class Puzzle : MonoBehaviour {
                         selected.RotatePiece(new Vector3(-1 * AB.z, 0, 0), 90);
                     }
                     selected.RoundTo90();
-                    selected.SnapToCut();
+                    //selected.SnapToCut();
                 }
                 else if (Input.GetKeyDown(KeyCode.Q))
                 {
@@ -129,19 +131,19 @@ public class Puzzle : MonoBehaviour {
                         selected.RotatePiece(new Vector3(1 * AB.z, 0, 0), 90);
                     }
                     selected.RoundTo90();
-                    selected.SnapToCut();
+                    //selected.SnapToCut();
                 }
                 if (Input.GetKeyDown(KeyCode.Alpha2))
                 {
                     selected.RotatePiece(new Vector3(0, 1, 0), 90);
                     selected.RoundTo90();
-                    selected.SnapToCut();
+                    //selected.SnapToCut();
                 }
                 else if (Input.GetKeyDown(KeyCode.Alpha3))
                 {
                     selected.RotatePiece(new Vector3(0, -1, 0), 90);
                     selected.RoundTo90();
-                    selected.SnapToCut();
+                    //selected.SnapToCut();
                 }
                 else if (Input.GetKeyDown(KeyCode.R))
                 {
@@ -394,5 +396,20 @@ public class Puzzle : MonoBehaviour {
 
         //Debug.Log("complete");
         return true;
+    }
+
+    public void ConfigurePiecePhysics()
+    {
+        foreach(Piece p in pieces)
+        {
+            if(p.IsPieceConnected())
+            {
+                p.Freeze();
+            }
+            else
+            {
+                p.UnFreeze();
+            }
+        }
     }
 }
