@@ -46,11 +46,10 @@ public class Cut : MonoBehaviour {
         for (int i = 0; i < cuts.Count; i++) {
             if (IfCutsTouch(cuts[i]))
             {
+                //Debug.Log("cut " + cuts[i].ID + " touches this (cut) " + ID);
                 return true;
             }
         }
         return false;
     }
-
-
 }

@@ -30,45 +30,10 @@ public class Puzzle : MonoBehaviour {
         //CreateCube();
         CreateTess();
 
-        /*
-        edges.Add(edges[00].cut_edge(0.5f));
-        edges.Add(edges[02].cut_edge(0.5f));
-        edges.Add(edges[08].cut_edge(0.5f));
-        edges.Add(edges[10].cut_edge(0.5f));
-        */
-
-        edges.Add(edges[00].cut_edge(0.2f));
-        edges.Add(edges[02].cut_edge(0.3f));
-        edges.Add(edges[08].cut_edge(0.4f));
-        edges.Add(edges[10].cut_edge(0.5f));
-
-        edges.Add(edges[04].cut_edge(0.5f));
-        edges.Add(edges[05].cut_edge(0.6f));
-        edges.Add(edges[06].cut_edge(0.7f));
-        edges.Add(edges[07].cut_edge(0.8f));
-
-        edges.Add(edges[01].cut_edge(0.1f));
-
-        edges.Add(edges[12].cut_edge(0.3f));
-        edges.Add(edges[13].cut_edge(0.2f));
-        edges.Add(edges[14].cut_edge(0.1f));
-        edges.Add(edges[15].cut_edge(0.1f));
-
-        edges.Add(edges[16].cut_edge(0.5f));
-        edges.Add(edges[17].cut_edge(0.5f));
-        edges.Add(edges[18].cut_edge(0.5f));
-        edges.Add(edges[19].cut_edge(0.5f));
-
-        edges.Add(edges[20].cut_edge(0.5f));
-        edges.Add(edges[22].cut_edge(0.5f));
-        edges.Add(edges[24].cut_edge(0.5f));
-        edges.Add(edges[28].cut_edge(0.5f));
-        edges.Add(edges[30].cut_edge(0.5f));
-
-        edges.Add(edges[32].cut_edge(0.5f));
-
-
-        //CreateRandomPuzzle();
+        if (random_seed == 0)
+            CreatePredefinedCuts();
+        else
+            CreateRandomCuts();
 
         Debug.Log(edges.Count);
 
@@ -84,7 +49,7 @@ public class Puzzle : MonoBehaviour {
 
         RecordAllCuts();
 
-        //DispersePieces();
+        DispersePieces();
 
         ConfigurePiecePhysics();
     }
@@ -158,10 +123,8 @@ public class Puzzle : MonoBehaviour {
                 {
                     float deltaX = Input.GetAxis("Mouse X");
                     float deltaY = Input.GetAxis("Mouse Y");
-                    Debug.Log("a");
                     if (Mathf.Abs(deltaX) > Mathf.Abs(deltaY))
                     {
-                        Debug.Log("a1");
                         //Vector3 r = new Vector3(0, -deltaX, 0);
                         Vector3 axis = new Vector3(0, 1, 0);
                         //Debug.Log("xyz rot " + deltaXYZ.ToString("F4"));
@@ -170,7 +133,6 @@ public class Puzzle : MonoBehaviour {
                     }
                     else if (Mathf.Abs(deltaY) > Mathf.Abs(deltaX))
                     {
-                        Debug.Log("a2");
                         Vector3 AB = Camera.main.transform.position - selected.transform.position;
 
                         Vector3 cross = Vector3.Cross(Vector3.up, AB);
@@ -260,7 +222,48 @@ public class Puzzle : MonoBehaviour {
         RecalculateConnectedEdges();
     }
 
-    private void CreateRandomPuzzle()
+    private void CreatePredefinedCuts()
+    {
+        /*
+        edges.Add(edges[00].cut_edge(0.5f));
+        edges.Add(edges[02].cut_edge(0.5f));
+        edges.Add(edges[08].cut_edge(0.5f));
+        edges.Add(edges[10].cut_edge(0.5f));
+        */
+        
+        edges.Add(edges[00].cut_edge(0.2f));
+        edges.Add(edges[02].cut_edge(0.3f));
+        edges.Add(edges[08].cut_edge(0.4f));
+        edges.Add(edges[10].cut_edge(0.5f));
+
+        edges.Add(edges[04].cut_edge(0.5f));
+        edges.Add(edges[05].cut_edge(0.6f));
+        edges.Add(edges[06].cut_edge(0.7f));
+        edges.Add(edges[07].cut_edge(0.8f));
+
+        edges.Add(edges[01].cut_edge(0.1f));
+
+        edges.Add(edges[12].cut_edge(0.3f));
+        edges.Add(edges[13].cut_edge(0.2f));
+        edges.Add(edges[14].cut_edge(0.1f));
+        edges.Add(edges[15].cut_edge(0.1f));
+
+        edges.Add(edges[16].cut_edge(0.5f));
+        edges.Add(edges[17].cut_edge(0.5f));
+        edges.Add(edges[18].cut_edge(0.5f));
+        edges.Add(edges[19].cut_edge(0.5f));
+
+        edges.Add(edges[20].cut_edge(0.5f));
+        edges.Add(edges[22].cut_edge(0.5f));
+        edges.Add(edges[24].cut_edge(0.5f));
+        edges.Add(edges[28].cut_edge(0.5f));
+        edges.Add(edges[30].cut_edge(0.5f));
+
+        edges.Add(edges[32].cut_edge(0.5f));
+        
+    }
+
+    private void CreateRandomCuts()
     {
         ShuffleBag s = new ShuffleBag(edges.Count);
         for (int i = 0; i < edges.Count; i++)

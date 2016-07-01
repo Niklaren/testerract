@@ -170,13 +170,17 @@ public class Edge : ScriptableObject {
         e.set_connected_edges_b(connected_edges_b);
         connected_edges_b.Clear();
 
-        GameObject cut_A = new GameObject("Cut");
-        GameObject cut_B = new GameObject("Cut");
+        GameObject cut_A = new GameObject();
+        GameObject cut_B = new GameObject();
 
-        //todo ib cut_b already exists -  move this cut b down and make new edge with old cut_b ??
+        //todo if cut_b already exists -  move this cut b down and make new edge with old cut_b ??
 
-        set_cut_b(cut_A.AddComponent<Cut>());
-        e.set_cut_a(cut_B.AddComponent<Cut>());
+        set_cut_b(cut_B.AddComponent<Cut>());
+        e.set_cut_a(cut_A.AddComponent<Cut>());
+
+        string cut_name = "Cut " + cut_b.GetID();
+        cut_A.name = cut_name;
+        cut_B.name = cut_name;
 
         cut_b.SetEdge(this);
         e.Get_cut_a().SetEdge(e);
