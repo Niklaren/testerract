@@ -59,6 +59,7 @@ public class DragPiece : MonoBehaviour
         {
             p.SnapToCut();
             p.transform.parent = null;
+            p.DeSelectPiece();
         }
     }
 }

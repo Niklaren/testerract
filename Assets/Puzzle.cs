@@ -65,6 +65,12 @@ public class Puzzle : MonoBehaviour {
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+
         if (selected != null)
         {
             //Debug.Log(CheckComplete());
@@ -174,6 +180,22 @@ public class Puzzle : MonoBehaviour {
     {
         edges.Clear();
 
+        // outer tri 20 - 31
+        edges.Add(new Edge(new Vector3(-1, -1, -1), new Vector3(2, -1, -1)));
+        edges.Add(new Edge(new Vector3(2, -1, -1), new Vector3(2, 2, -1)));
+        edges.Add(new Edge(new Vector3(2, 2, -1), new Vector3(-1, 2, -1)));
+        edges.Add(new Edge(new Vector3(-1, 2, -1), new Vector3(-1, -1, -1)));
+
+        edges.Add(new Edge(new Vector3(-1, -1, -1), new Vector3(-1, -1, 2)));
+        edges.Add(new Edge(new Vector3(2, -1, -1), new Vector3(2, -1, 2)));
+        edges.Add(new Edge(new Vector3(2, 2, -1), new Vector3(2, 2, 2)));
+        edges.Add(new Edge(new Vector3(-1, 2, -1), new Vector3(-1, 2, 2)));
+
+        edges.Add(new Edge(new Vector3(-1, -1, 2), new Vector3(2, -1, 2)));
+        edges.Add(new Edge(new Vector3(2, -1, 2), new Vector3(2, 2, 2)));
+        edges.Add(new Edge(new Vector3(2, 2, 2), new Vector3(-1, 2, 2)));
+        edges.Add(new Edge(new Vector3(-1, 2, 2), new Vector3(-1, -1, 2)));
+
         // inner tri 0 -11
         edges.Add(new Edge(new Vector3(0, 0, 0), new Vector3(1, 0, 0)));
         edges.Add(new Edge(new Vector3(1, 0, 0), new Vector3(1, 1, 0)));
@@ -200,23 +222,6 @@ public class Puzzle : MonoBehaviour {
         edges.Add(new Edge(new Vector3(1, 0, 1), new Vector3(2, -1, 2)));
         edges.Add(new Edge(new Vector3(1, 1, 1), new Vector3(2, 2, 2)));
         edges.Add(new Edge(new Vector3(0, 1, 1), new Vector3(-1, 2, 2)));
-
-        // outer tri 20 - 31
-        edges.Add(new Edge(new Vector3(-1, -1, -1), new Vector3(2, -1, -1)));
-        edges.Add(new Edge(new Vector3(2, -1, -1), new Vector3(2, 2, -1)));
-        edges.Add(new Edge(new Vector3(2, 2, -1), new Vector3(-1, 2, -1)));
-        edges.Add(new Edge(new Vector3(-1, 2, -1), new Vector3(-1, -1, -1)));
-
-        edges.Add(new Edge(new Vector3(-1, -1, -1), new Vector3(-1, -1, 2)));
-        edges.Add(new Edge(new Vector3(2, -1, -1), new Vector3(2, -1, 2)));
-        edges.Add(new Edge(new Vector3(2, 2, -1), new Vector3(2, 2, 2)));
-        edges.Add(new Edge(new Vector3(-1, 2, -1), new Vector3(-1, 2, 2)));
-
-        edges.Add(new Edge(new Vector3(-1, -1, 2), new Vector3(2, -1, 2)));
-        edges.Add(new Edge(new Vector3(2, -1, 2), new Vector3(2, 2, 2)));
-        edges.Add(new Edge(new Vector3(2, 2, 2), new Vector3(-1, 2, 2)));
-        edges.Add(new Edge(new Vector3(-1, 2, 2), new Vector3(-1, -1, 2)));
-
 
 
         RecalculateConnectedEdges();
@@ -277,7 +282,15 @@ public class Puzzle : MonoBehaviour {
             // cut random edge at a random distance along
 
             int edgeToCut = s.Next();
-            float distToCut = Random.Range(0.1f, 0.9f);
+
+            //float distToCut = Random.Range(0.1f, 0.9f);
+
+            float distToCut = Random.Range(0, 1);
+            if (distToCut == 0)
+                distToCut = 0.01f;
+            else
+                distToCut = 0.99f;
+
             edges.Add(edges[edgeToCut].cut_edge(distToCut));
             // s.Add(edges.Count,1);
             // recalc pieces

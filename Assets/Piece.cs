@@ -179,45 +179,48 @@ public class Piece : MonoBehaviour {
         {
             for (int j = 0; j < all_cuts.Count; j++)
             {
-                if ((cuts[i] != all_cuts[j]) && (cuts[i].GetEdge() != all_cuts[j].GetEdge()))
+                // if it not checking vs itslef and its not the same piece
+                if ((cuts[i] != all_cuts[j]) && (cuts[i].GetEdge().GetPiece() != all_cuts[j].GetEdge().GetPiece()))
                 {
+
                     // if the cuts are close enough to snap together
-                    if (Vector3.Distance(cuts[i].Get_cut_pos(), all_cuts[j].Get_cut_pos()) < 0.1f)
+                    if (Vector3.Distance(cuts[i].Get_cut_pos(), all_cuts[j].Get_cut_pos()) < 0.2f)
                     {
-                        // if other cut is already connected to any other cut, then don't snap to it
-                        List<Cut> AllOtherCuts = new List<Cut>(all_cuts);
-                        AllOtherCuts.Remove(cuts[i]);
-                        AllOtherCuts.Remove(all_cuts[j]);
-                        Debug.Log("all cuts has " + all_cuts.Count + " all other cuts has " + AllOtherCuts.Count);
-                        if (all_cuts[j].IfAnyCutsTouchThis(AllOtherCuts))
-                        {
-                            Debug.Log("cut " + all_cuts[j].GetID() + " already connected - don't snap");
-                            //return;
-                            break;
-                        }
-                        Debug.Log("cut " + all_cuts[j].GetID() + " is unconnected.");
-
-
-                        //Debug.Log("this cut loc rot eul at " + cuts[i].transform.localEulerAngles.ToString("F4"));
-                        //Debug.Log("this cut rot eul at " + cuts[i].transform.rotation.eulerAngles.ToString("F4"));
-                        //Debug.Log("this cut rot quat at " + cuts[i].transform.rotation.ToString("F4"));
-                        //Debug.Log("this cut FORWARD " + cuts[i].transform.forward.ToString("F4"));
-                        //Debug.Log("this cut FORWARD mag " + cuts[i].transform.forward.magnitude.ToString("F4"));
-                        //Debug.Log("other cut loc rot eul at " + all_cuts[j].transform.localEulerAngles.ToString("F4"));
-                        //Debug.Log("other cut rot eul at " + all_cuts[j].transform.rotation.eulerAngles.ToString("F4"));
-                        //Debug.Log("other cut rot quat at " + all_cuts[j].transform.rotation.ToString("F4"));
-                        //Debug.Log("other cut FORWARD " + all_cuts[j].transform.forward.ToString("F4"));
-                        //Debug.Log("other cut FORWARD mag " + all_cuts[j].transform.forward.magnitude.ToString("F4"));
-
-                        //cuts[i].transform.forward = -all_cuts[j].transform.forward;
-
+                        // check if angles align (within tolerance)
                         all_cuts[j].GetEdge().GetPiece().RoundTo90();
-
                         Vector3 iF = -cuts[i].transform.forward;
                         Vector3 jF = all_cuts[j].transform.forward;
-                        float tolerance = 1.1f;
+                        float tolerance = 0.5f;
                         if ((Mathf.Abs(iF.x - jF.x) < tolerance) && (Mathf.Abs(iF.x - jF.x) < tolerance) && (Mathf.Abs(iF.x - jF.x) < tolerance))
                         {
+                            // if other cut is already connected to any other cut, then don't snap to it
+                            List<Cut> AllOtherCuts = new List<Cut>(all_cuts);
+                            AllOtherCuts.Remove(cuts[i]);
+                            AllOtherCuts.Remove(all_cuts[j]);
+                            Debug.Log("all cuts has " + all_cuts.Count + " all other cuts has " + AllOtherCuts.Count);
+                            if (all_cuts[j].IfAnyCutsTouchThis(AllOtherCuts))
+                            {
+                                Debug.Log("cut " + all_cuts[j].GetID() + " already connected - don't snap");
+                                //return;
+                                break;
+                            }
+                            Debug.Log("cut " + all_cuts[j].GetID() + " is unconnected.");
+
+
+                            //Debug.Log("this cut loc rot eul at " + cuts[i].transform.localEulerAngles.ToString("F4"));
+                            //Debug.Log("this cut rot eul at " + cuts[i].transform.rotation.eulerAngles.ToString("F4"));
+                            //Debug.Log("this cut rot quat at " + cuts[i].transform.rotation.ToString("F4"));
+                            //Debug.Log("this cut FORWARD " + cuts[i].transform.forward.ToString("F4"));
+                            //Debug.Log("this cut FORWARD mag " + cuts[i].transform.forward.magnitude.ToString("F4"));
+                            //Debug.Log("other cut loc rot eul at " + all_cuts[j].transform.localEulerAngles.ToString("F4"));
+                            //Debug.Log("other cut rot eul at " + all_cuts[j].transform.rotation.eulerAngles.ToString("F4"));
+                            //Debug.Log("other cut rot quat at " + all_cuts[j].transform.rotation.ToString("F4"));
+                            //Debug.Log("other cut FORWARD " + all_cuts[j].transform.forward.ToString("F4"));
+                            //Debug.Log("other cut FORWARD mag " + all_cuts[j].transform.forward.magnitude.ToString("F4"));
+
+                            //cuts[i].transform.forward = -all_cuts[j].transform.forward;
+
+
                             // to do angle to rotate between the 2 vectors
                             // look this up later :3
                             /*float a = Vector3.Angle(iF, jF);
@@ -252,16 +255,14 @@ public class Piece : MonoBehaviour {
 
                             RotatedDelta = transform.position - NonRotatedPosition;
 
+                            Vector3 d = all_cuts[j].Get_cut_pos() - cuts[i].Get_cut_pos();
+                            //Debug.Log("this cut at " + cuts[i].Get_cut_pos().ToString("F4"));
+                            //Debug.Log("other cut at " + all_cuts[j].Get_cut_pos().ToString("F4"));
+                            //Debug.Log("move: " + d.ToString("F4"));
+                            MovePieceDelta(d);
+
+                            return;
                         }
-
-                        Vector3 d = all_cuts[j].Get_cut_pos() - cuts[i].Get_cut_pos();
-                        //Debug.Log("this cut at " + cuts[i].Get_cut_pos().ToString("F4"));
-                        //Debug.Log("other cut at " + all_cuts[j].Get_cut_pos().ToString("F4"));
-                        //Debug.Log("move: " + d.ToString("F4"));
-                        MovePieceDelta(d);
-
-
-                        return;
                     }
                 }
             }
@@ -312,6 +313,7 @@ public class Piece : MonoBehaviour {
         gameObject.transform.eulerAngles = new Vector3(0, 0, 0);
         Debug.Log(gameObject.transform.eulerAngles);
         RotatedDelta = Vector3.zero;
+
     }
 
     public void RoundTo90()
@@ -374,6 +376,10 @@ public class Piece : MonoBehaviour {
         if(puzzle.selected != null)
             puzzle.selected.DoDeSelection();
         DoSelection();
+    }
+    public void DeSelectPiece()
+    {
+        DoDeSelection();
     }
 
     private void DoDeSelection()
