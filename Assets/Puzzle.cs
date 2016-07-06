@@ -56,12 +56,17 @@ public class Puzzle : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
             if (Cursor.lockState != CursorLockMode.Locked)
             {
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
+            }
+
+            if (selected != null)
+            {
+                selected.DeSelectPiece();
             }
         }
 
@@ -81,13 +86,13 @@ public class Puzzle : MonoBehaviour {
                     Vector3 AB = Camera.main.transform.position - selected.transform.position;
                     if (Mathf.Abs(AB.x) > Mathf.Abs(AB.z))
                     {
-                        selected.RotatePiece(new Vector3(0, 0, 1 * AB.x), 90);
+                        selected.RotateTween(new Vector3(0, 0, 1 * AB.x), 90);
                     }
                     else
                     {
-                        selected.RotatePiece(new Vector3(-1 * AB.z, 0, 0), 90);
+                        selected.RotateTween(new Vector3(-1 * AB.z, 0, 0), 90);
                     }
-                    selected.RoundTo90();
+                    //selected.RoundTo90();
                     //selected.SnapToCut();
                 }
                 else if (Input.GetKeyDown(KeyCode.Q))
@@ -95,25 +100,25 @@ public class Puzzle : MonoBehaviour {
                     Vector3 AB = Camera.main.transform.position - selected.transform.position;
                     if (Mathf.Abs(AB.x) > Mathf.Abs(AB.z))
                     {
-                        selected.RotatePiece(new Vector3(0, 0, -1 * AB.x), 90);
+                        selected.RotateTween(new Vector3(0, 0, -1 * AB.x), 90);
                     }
                     else
                     {
-                        selected.RotatePiece(new Vector3(1 * AB.z, 0, 0), 90);
+                        selected.RotateTween(new Vector3(1 * AB.z, 0, 0), 90);
                     }
-                    selected.RoundTo90();
+                    //selected.RoundTo90();
                     //selected.SnapToCut();
                 }
                 if (Input.GetKeyDown(KeyCode.Alpha2))
                 {
-                    selected.RotatePiece(new Vector3(0, 1, 0), 90);
-                    selected.RoundTo90();
+                    selected.RotateTween(new Vector3(0, 1, 0), 90);
+                    //selected.RoundTo90();
                     //selected.SnapToCut();
                 }
                 else if (Input.GetKeyDown(KeyCode.Alpha3))
                 {
-                    selected.RotatePiece(new Vector3(0, -1, 0), 90);
-                    selected.RoundTo90();
+                    selected.RotateTween(new Vector3(0, -1, 0), 90);
+                    //selected.RoundTo90();
                     //selected.SnapToCut();
                 }
                 else if (Input.GetKeyDown(KeyCode.R))
@@ -182,19 +187,19 @@ public class Puzzle : MonoBehaviour {
 
         // outer tri 20 - 31
         edges.Add(new Edge(new Vector3(-1, -1, -1), new Vector3(2, -1, -1)));
-        edges.Add(new Edge(new Vector3(2, -1, -1), new Vector3(2, 2, -1)));
-        edges.Add(new Edge(new Vector3(2, 2, -1), new Vector3(-1, 2, -1)));
-        edges.Add(new Edge(new Vector3(-1, 2, -1), new Vector3(-1, -1, -1)));
-
         edges.Add(new Edge(new Vector3(-1, -1, -1), new Vector3(-1, -1, 2)));
         edges.Add(new Edge(new Vector3(2, -1, -1), new Vector3(2, -1, 2)));
+        edges.Add(new Edge(new Vector3(-1, -1, 2), new Vector3(2, -1, 2)));
+
+        edges.Add(new Edge(new Vector3(2, -1, -1), new Vector3(2, 2, -1)));
+        edges.Add(new Edge(new Vector3(-1, 2, -1), new Vector3(-1, -1, -1)));
+        edges.Add(new Edge(new Vector3(2, -1, 2), new Vector3(2, 2, 2)));
+        edges.Add(new Edge(new Vector3(-1, 2, 2), new Vector3(-1, -1, 2)));
+
+        edges.Add(new Edge(new Vector3(2, 2, -1), new Vector3(-1, 2, -1)));
         edges.Add(new Edge(new Vector3(2, 2, -1), new Vector3(2, 2, 2)));
         edges.Add(new Edge(new Vector3(-1, 2, -1), new Vector3(-1, 2, 2)));
-
-        edges.Add(new Edge(new Vector3(-1, -1, 2), new Vector3(2, -1, 2)));
-        edges.Add(new Edge(new Vector3(2, -1, 2), new Vector3(2, 2, 2)));
         edges.Add(new Edge(new Vector3(2, 2, 2), new Vector3(-1, 2, 2)));
-        edges.Add(new Edge(new Vector3(-1, 2, 2), new Vector3(-1, -1, 2)));
 
         // inner tri 0 -11
         edges.Add(new Edge(new Vector3(0, 0, 0), new Vector3(1, 0, 0)));
@@ -271,7 +276,7 @@ public class Puzzle : MonoBehaviour {
     private void CreateRandomCuts()
     {
         ShuffleBag s = new ShuffleBag(edges.Count);
-        for (int i = 0; i < edges.Count; i++)
+        for (int i = 4; i < edges.Count; i++) // don't cut bottom 4 pieces :)
             s.Add(i, 1); //2 for dbl cuts? // that's no good! dont do that!!
 
         if (random_seed!=0)
@@ -287,9 +292,9 @@ public class Puzzle : MonoBehaviour {
 
             float distToCut = Random.Range(0, 1);
             if (distToCut == 0)
-                distToCut = 0.01f;
+                distToCut = 0.05f;
             else
-                distToCut = 0.99f;
+                distToCut = 0.95f;
 
             edges.Add(edges[edgeToCut].cut_edge(distToCut));
             // s.Add(edges.Count,1);
@@ -335,7 +340,7 @@ public class Puzzle : MonoBehaviour {
             //MakePiece(unvisited[0]);
             Piece p;
             if (piece_index >= pieces.Count) {
-                p = Instantiate(piece_object).GetComponent<Piece>(); //p = new Piece();
+                p = Instantiate(piece_object).GetComponent<Piece>(); //p = new Piece(); 
             } else {
                 p = pieces[piece_index];
                 p.Reset();
@@ -367,6 +372,7 @@ public class Puzzle : MonoBehaviour {
 
             if(!pieces.Contains(p))
                 pieces.Add(p);
+            p.name = "Piece " + piece_index;
             piece_index++;
         }
 
@@ -410,7 +416,9 @@ public class Puzzle : MonoBehaviour {
             }
         }
 
-        //Debug.Log("complete");
+        Debug.Log("complete");
+        foreach (Piece p in pieces)
+            p.SetCore();
         return true;
     }
 

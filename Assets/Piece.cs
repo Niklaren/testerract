@@ -20,12 +20,20 @@ public class Piece : MonoBehaviour {
     public void SetPuzzle(Puzzle p) { puzzle = p; }
     bool core = false;
     public bool selected = false;
+    bool selectedThisUpdate = false;
 
     //GameObject PieceObject;
     public Vector3 GetPosition() { return NonRotatedPosition + LocalCentre; }//gameObject.transform.position; }
     Vector3 RotatedDelta;
     Vector3 LocalCentre;
     Vector3 NonRotatedPosition;
+
+    private Vector3 previousPosition;
+
+    const float lerpTime = 0.6f;
+    float lerpTimer = 2.0f;
+    Quaternion start_rot;
+    Quaternion end_rot;
 
     private Rigidbody rb;
 
@@ -39,17 +47,69 @@ public class Piece : MonoBehaviour {
     {
         if (puzzle == null)
             puzzle = FindObjectOfType<Puzzle>();
+
+        previousPosition = rb.position;
     }
 
-    /*
+    
     public void Update()
     {
-        if(this == puzzle.selected)
+        if (selected)
         {
+            selectedThisUpdate = false;
 
+            if (lerpTimer < lerpTime)
+            {
+                lerpTimer += Time.deltaTime;
+                transform.rotation = Quaternion.Slerp(start_rot, end_rot, (lerpTimer / lerpTime));
+            }
+            // place x in front of camera
+            //
+            // if below floor move above floor
+            //
+            //
+            
         }
     }
-    */
+
+    public void FixedUpdate()
+    {
+        if (selected) 
+        {
+            // place in front of cam
+            Vector3 Position = (Camera.main.gameObject.transform.position + (Camera.main.gameObject.transform.forward * 2.8f));
+            transform.position = Position;
+
+            // check distance from floor
+            Collider[] colliders = GetComponentsInChildren<Collider>();
+            float floorY = -1.0f; // prototype code magic number
+            float minY = floorY;
+            foreach (Collider collider in colliders)
+            {
+                if (collider.bounds.min.y < minY)
+                    minY = collider.bounds.min.y;
+            }
+            float diff = floorY - minY;
+            Debug.Log("diff " + diff);
+
+            // if beneath floor
+            if (diff > 0)
+            {
+                transform.Translate(0, diff, 0, Space.World);
+            }
+        }
+    }
+    
+    void OnCollisionStay(Collision collision)
+    {
+        if(collision.gameObject.name == "Plane" && selected) // DISCLAIMER: prototype code
+        {
+            //Debug.Log("colliding with " + collision.gameObject.name);
+            //transform.position = previousPosition;
+            //transform.Translate(0, 0.1f, 0, Space.World);
+            
+        }
+    }
 
     public void Reset()
     {
@@ -169,6 +229,8 @@ public class Piece : MonoBehaviour {
         CheckForSnap();
 
         puzzle.ConfigurePiecePhysics();
+
+        puzzle.CheckComplete();
     }
 
     private void CheckForSnap()
@@ -184,28 +246,28 @@ public class Piece : MonoBehaviour {
                 {
 
                     // if the cuts are close enough to snap together
-                    if (Vector3.Distance(cuts[i].Get_cut_pos(), all_cuts[j].Get_cut_pos()) < 0.2f)
+                    if (Vector3.Distance(cuts[i].Get_cut_pos(), all_cuts[j].Get_cut_pos()) < 0.3f)
                     {
                         // check if angles align (within tolerance)
                         all_cuts[j].GetEdge().GetPiece().RoundTo90();
                         Vector3 iF = -cuts[i].transform.forward;
                         Vector3 jF = all_cuts[j].transform.forward;
-                        float tolerance = 0.5f;
-                        if ((Mathf.Abs(iF.x - jF.x) < tolerance) && (Mathf.Abs(iF.x - jF.x) < tolerance) && (Mathf.Abs(iF.x - jF.x) < tolerance))
+                        float tolerance = 0.4f;
+                        if ((Mathf.Abs(iF.x - jF.x) < tolerance) && (Mathf.Abs(iF.y - jF.y) < tolerance) && (Mathf.Abs(iF.z - jF.z) < tolerance))
                         {
                             // if other cut is already connected to any other cut, then don't snap to it
                             List<Cut> AllOtherCuts = new List<Cut>(all_cuts);
                             AllOtherCuts.Remove(cuts[i]);
                             AllOtherCuts.Remove(all_cuts[j]);
-                            Debug.Log("all cuts has " + all_cuts.Count + " all other cuts has " + AllOtherCuts.Count);
+
                             if (all_cuts[j].IfAnyCutsTouchThis(AllOtherCuts))
                             {
                                 Debug.Log("cut " + all_cuts[j].GetID() + " already connected - don't snap");
                                 //return;
                                 break;
                             }
-                            Debug.Log("cut " + all_cuts[j].GetID() + " is unconnected.");
-
+                            Debug.Log("cut " + all_cuts[j].GetID() + " of piece " + all_cuts[j].GetEdge().GetPiece().gameObject.name +
+                                " is unconnected. snap with cut " + cuts[i].GetID());
 
                             //Debug.Log("this cut loc rot eul at " + cuts[i].transform.localEulerAngles.ToString("F4"));
                             //Debug.Log("this cut rot eul at " + cuts[i].transform.rotation.eulerAngles.ToString("F4"));
@@ -242,12 +304,12 @@ public class Piece : MonoBehaviour {
                             //Vector3 jjF = new Vector3(0, 1, 0);
 
                             Vector3 axis = Vector3.Cross(iF, jF);
-                            Debug.Log("axis: " + axis);
+                            //Debug.Log("axis: " + axis);
                             float angle = Vector3.Angle(iF, jF);
-                            Debug.Log("angle: " + angle);
+                            //Debug.Log("angle: " + angle);
 
                             //cuts[i].gameObject.transform.Rotate(axis, angle, Space.World);
-                            Debug.Log(gameObject.transform.position.ToString("f4"));
+                            //Debug.Log(gameObject.transform.position.ToString("f4"));
 
                             gameObject.transform.Rotate(axis, angle, Space.World);
 
@@ -288,7 +350,7 @@ public class Piece : MonoBehaviour {
         gameObject.transform.position = (gameObject.transform.position + v);
         //gameObject.transform.
         NonRotatedPosition += v;
-        puzzle.CheckComplete();
+        
     }
 
     public void RotatePiece(Vector3 r, float angle)
@@ -302,16 +364,56 @@ public class Piece : MonoBehaviour {
         //Vector3 p1 = transform.position;
         //transform.position = Vector3.zero;
         //transform.position -= LocalCentre;
-        transform.Rotate(r, angle, Space.World);
+        transform.Rotate(r, angle, Space.World);;
+
         //transform.position += LocalCentre;
         //transform.position += p1;
 
+        
+    }
+
+    public void RotateTween(Vector3 r, float angle)
+    {
+        Vector3 r1 = transform.rotation.eulerAngles;
+        transform.Rotate(r, angle, Space.World);
+        Vector3 r2 = transform.rotation.eulerAngles;
+        r.Normalize();
+        //Vector3 ra = (r * angle);
+        //Vector3 r3 = r1 + ra;
+        //Vector3 r4 = r3;
+        //r3.x = r3.x % 360;
+        //r3.y = r3.y % 360;
+        //r3.z = r3.z % 360;
+        //r3.x = Mathf.Round(r3.x / 90) * 90;
+        //r3.y = Mathf.Round(r3.y / 90) * 90;
+        //r3.z = Mathf.Round(r3.z / 90) * 90;
+        Vector3 roundME = gameObject.transform.eulerAngles;
+        transform.Rotate(r, -angle, Space.World);
+        
+        
+        roundME.x = Mathf.Round(roundME.x / 90) * 90;
+        roundME.y = Mathf.Round(roundME.y / 90) * 90;
+        roundME.z = Mathf.Round(roundME.z / 90) * 90;
+        //Debug.Log("r1: " + r1 + "  ra: " + ra + "  r4: " + r4 + "  r2: " + r2 + "  r3: " + r3 +  "  rm: " + roundME);
+
+
+        start_rot = transform.rotation;
+        end_rot = Quaternion.Euler(roundME);
+        
+        //Debug.Log("q_cur " + start_rot + " q_rot " + end_rot);
+
+        lerpTimer = 0.0f;
+
+        //transform.rotation = Quaternion.RotateTowards(transform.rotation, q_rot, 0.1f * Time.deltaTime);//Quaternion.Slerp(q_cur, q_rot, Time.deltaTime);
+
+        //LeanTween.rotate(gameObject, roundME, 0.6f);
+        //LeanTween.rotate()
     }
 
     public void ResetRotation()
     {
         gameObject.transform.eulerAngles = new Vector3(0, 0, 0);
-        Debug.Log(gameObject.transform.eulerAngles);
+        //Debug.Log(gameObject.transform.eulerAngles);
         RotatedDelta = Vector3.zero;
 
     }
@@ -353,12 +455,11 @@ public class Piece : MonoBehaviour {
         //Vector3 diff = p1 - p2;
 
         //gameObject.transform.position += diff;
-
     }
 
     public void Freeze()
     {
-        rb.isKinematic = true;
+        //rb.isKinematic = true;
         rb.constraints = RigidbodyConstraints.FreezeAll;
     }
 
@@ -373,13 +474,19 @@ public class Piece : MonoBehaviour {
 
     public void SelectPiece()
     {
+        selectedThisUpdate = true;
+
         if(puzzle.selected != null)
             puzzle.selected.DoDeSelection();
         DoSelection();
     }
     public void DeSelectPiece()
     {
-        DoDeSelection();
+        if (!selectedThisUpdate)
+        {
+            DoDeSelection();
+            SnapToCut();
+        }
     }
 
     private void DoDeSelection()
@@ -391,8 +498,7 @@ public class Piece : MonoBehaviour {
         {
             mr.material = mat_default;
         }
-
-
+        transform.SetParent(puzzle.transform);
     }
     private void DoSelection()
     {

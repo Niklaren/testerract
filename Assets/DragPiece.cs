@@ -21,14 +21,19 @@ public class DragPiece : MonoBehaviour
     {
         if (Vector3.Distance(cam.transform.position, p.transform.position) < 4)
         {
-            p.SelectPiece();
+            if (!p.selected)
+            {
+                p.SelectPiece();
+            }
+
             if (p.selected)
             {
-                //Vector3 Position = (cam.gameObject.transform.position + (cam.gameObject.transform.forward * 2));
-
-
-                //p.MovePieceTo(Position);
                 p.transform.SetParent(cam.transform);
+
+                //Vector3 Position = (cam.gameObject.transform.position + (cam.gameObject.transform.forward*2.8f));
+
+                //p.transform.position = Position;
+                ////p.MovePieceTo(Position);
             }
         }
         /*screenPoint = cam.WorldToScreenPoint(gameObject.transform.position);
@@ -41,12 +46,9 @@ public class DragPiece : MonoBehaviour
     {
         if (p.selected)
         {
-            //Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
-            //Vector3 Position = cam.ScreenToWorldPoint(mousePos) + offset;
-            //Vector3 Position = (cam.gameObject.transform.position + (cam.gameObject.transform.forward*2));
+            //Vector3 Position = (cam.gameObject.transform.position + (cam.gameObject.transform.forward * 2.8f));
 
             //p.transform.position = Position;
-            //p.MovePieceTo(Position);
         }
         /*Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
         Vector3 Position = cam.ScreenToWorldPoint(mousePos) + offset;
@@ -57,9 +59,8 @@ public class DragPiece : MonoBehaviour
     {
         if (p.selected)
         {
-            p.SnapToCut();
-            p.transform.parent = null;
-            p.DeSelectPiece();
+            //p.SnapToCut();
+            //p.DeSelectPiece();
         }
     }
 }
