@@ -82,7 +82,7 @@ public class Piece : MonoBehaviour {
 
             // check distance from floor
             Collider[] colliders = GetComponentsInChildren<Collider>();
-            float floorY = -1.0f; // prototype code magic number
+            float floorY = -1.55f; // prototype code magic number
             float minY = floorY;
             foreach (Collider collider in colliders)
             {
@@ -90,24 +90,13 @@ public class Piece : MonoBehaviour {
                     minY = collider.bounds.min.y;
             }
             float diff = floorY - minY;
-            Debug.Log("diff " + diff);
+            //Debug.Log("diff " + diff);
 
             // if beneath floor
             if (diff > 0)
             {
                 transform.Translate(0, diff, 0, Space.World);
             }
-        }
-    }
-    
-    void OnCollisionStay(Collision collision)
-    {
-        if(collision.gameObject.name == "Plane" && selected) // DISCLAIMER: prototype code
-        {
-            //Debug.Log("colliding with " + collision.gameObject.name);
-            //transform.position = previousPosition;
-            //transform.Translate(0, 0.1f, 0, Space.World);
-            
         }
     }
 
@@ -160,6 +149,7 @@ public class Piece : MonoBehaviour {
         return this;
     }
 
+    // if the cut appears twice in the same piece, it should get joined.
     private void JoinUnusedCuts()
     {
         //Debug.Log("try join unused");
@@ -171,7 +161,7 @@ public class Piece : MonoBehaviour {
                 {
                     if(c1.GetID() == c2.GetID())
                     {
-                        //Debug.Log("try joining now");
+                        Debug.Log("try joining now. cut: "+ c1.GetID());
                         c1.GetEdge().join_cuts(c2.GetEdge());
                     }
                 }

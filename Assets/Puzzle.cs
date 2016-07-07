@@ -127,7 +127,8 @@ public class Puzzle : MonoBehaviour {
                 }
                 else if (Input.GetKeyDown(KeyCode.T))
                 {
-                    selected.RoundTo90();
+                    //selected.RoundTo90();
+                    selected.RotateTween(new Vector3(0, 0, 0), 0);
                 }
 
                 if (Input.GetMouseButton(1))
@@ -155,6 +156,16 @@ public class Puzzle : MonoBehaviour {
                     //selected.SnapToCut();
 
                 }
+
+                if (Input.GetAxis("Mouse ScrollWheel") > 0)
+                {
+                    
+                }
+
+                if (Input.GetAxis("Mouse ScrollWheel") < 0)
+                {
+                    
+                }
             }
         }
     }
@@ -163,20 +174,20 @@ public class Puzzle : MonoBehaviour {
     {
         edges.Clear();
 
-        edges.Add(new Edge(new Vector3(0, 0, 0), new Vector3(1, 0, 0)));
-        edges.Add(new Edge(new Vector3(1, 0, 0), new Vector3(1, 1, 0)));
-        edges.Add(new Edge(new Vector3(1, 1, 0), new Vector3(0, 1, 0)));
-        edges.Add(new Edge(new Vector3(0, 1, 0), new Vector3(0, 0, 0)));
+        edges.Add(new Edge(new Vector3(-0.5f, -0.5f, -0.5f), new Vector3(0.5f, -0.5f, -0.5f)));
+        edges.Add(new Edge(new Vector3(0.5f, -0.5f, -0.5f), new Vector3(0.5f, -0.5f, 0.5f)));
+        edges.Add(new Edge(new Vector3(0.5f, -0.5f, 0.5f), new Vector3(-0.5f, -0.5f, 0.5f)));
+        edges.Add(new Edge(new Vector3(-0.5f, -0.5f, 0.5f), new Vector3(-0.5f, -0.5f, -0.5f)));
 
-        edges.Add(new Edge(new Vector3(0, 0, 0), new Vector3(0, 0, 1)));
-        edges.Add(new Edge(new Vector3(1, 0, 0), new Vector3(1, 0, 1)));
-        edges.Add(new Edge(new Vector3(1, 1, 0), new Vector3(1, 1, 1)));
-        edges.Add(new Edge(new Vector3(0, 1, 0), new Vector3(0, 1, 1)));
+        edges.Add(new Edge(new Vector3(-0.5f, -0.5f, -0.5f), new Vector3(-0.5f, 0.5f, -0.5f)));
+        edges.Add(new Edge(new Vector3(0.5f, -0.5f, -0.5f), new Vector3(0.5f, 0.5f, -0.5f)));
+        edges.Add(new Edge(new Vector3(0.5f, -0.5f, 0.5f), new Vector3(0.5f, 0.5f, 0.5f)));
+        edges.Add(new Edge(new Vector3(-0.5f, -0.5f, 0.5f), new Vector3(-0.5f, 0.5f, 0.5f)));
 
-        edges.Add(new Edge(new Vector3(0, 0, 1), new Vector3(1, 0, 1)));
-        edges.Add(new Edge(new Vector3(1, 0, 1), new Vector3(1, 1, 1)));
-        edges.Add(new Edge(new Vector3(1, 1, 1), new Vector3(0, 1, 1)));
-        edges.Add(new Edge(new Vector3(0, 1, 1), new Vector3(0, 0, 1)));
+        edges.Add(new Edge(new Vector3(-0.5f, 0.5f, -0.5f), new Vector3(0.5f, 0.5f, -0.5f)));
+        edges.Add(new Edge(new Vector3(0.5f, 0.5f, -0.5f), new Vector3(0.5f, 0.5f, 0.5f)));
+        edges.Add(new Edge(new Vector3(0.5f, 0.5f, 0.5f), new Vector3(-0.5f, 0.5f, 0.5f)));
+        edges.Add(new Edge(new Vector3(-0.5f, 0.5f, 0.5f), new Vector3(-0.5f, 0.5f, -0.5f)));
 
         RecalculateConnectedEdges();
     }
@@ -185,48 +196,48 @@ public class Puzzle : MonoBehaviour {
     {
         edges.Clear();
 
-        // outer tri 20 - 31
-        edges.Add(new Edge(new Vector3(-1, -1, -1), new Vector3(2, -1, -1)));
-        edges.Add(new Edge(new Vector3(-1, -1, -1), new Vector3(-1, -1, 2)));
-        edges.Add(new Edge(new Vector3(2, -1, -1), new Vector3(2, -1, 2)));
-        edges.Add(new Edge(new Vector3(-1, -1, 2), new Vector3(2, -1, 2)));
+        // outer quad 0-11
+        edges.Add(new Edge(new Vector3(-1.5f, -1.5f, -1.5f), new Vector3(1.5f, -1.5f, -1.5f)));
+        edges.Add(new Edge(new Vector3(1.5f, -1.5f, -1.5f), new Vector3(1.5f, -1.5f, 1.5f)));
+        edges.Add(new Edge(new Vector3(1.5f, -1.5f, 1.5f), new Vector3(-1.5f, -1.5f, 1.5f)));
+        edges.Add(new Edge(new Vector3(-1.5f, -1.5f, 1.5f), new Vector3(-1.5f, -1.5f, -1.5f)));
 
-        edges.Add(new Edge(new Vector3(2, -1, -1), new Vector3(2, 2, -1)));
-        edges.Add(new Edge(new Vector3(-1, 2, -1), new Vector3(-1, -1, -1)));
-        edges.Add(new Edge(new Vector3(2, -1, 2), new Vector3(2, 2, 2)));
-        edges.Add(new Edge(new Vector3(-1, 2, 2), new Vector3(-1, -1, 2)));
+        edges.Add(new Edge(new Vector3(-1.5f, -1.5f, -1.5f), new Vector3(-1.5f, 1.5f, -1.5f)));
+        edges.Add(new Edge(new Vector3(1.5f, -1.5f, -1.5f), new Vector3(1.5f, 1.5f, -1.5f)));
+        edges.Add(new Edge(new Vector3(1.5f, -1.5f, 1.5f), new Vector3(1.5f, 1.5f, 1.5f)));
+        edges.Add(new Edge(new Vector3(-1.5f, -1.5f, 1.5f), new Vector3(-1.5f, 1.5f, 1.5f)));
 
-        edges.Add(new Edge(new Vector3(2, 2, -1), new Vector3(-1, 2, -1)));
-        edges.Add(new Edge(new Vector3(2, 2, -1), new Vector3(2, 2, 2)));
-        edges.Add(new Edge(new Vector3(-1, 2, -1), new Vector3(-1, 2, 2)));
-        edges.Add(new Edge(new Vector3(2, 2, 2), new Vector3(-1, 2, 2)));
+        edges.Add(new Edge(new Vector3(-1.5f, 1.5f, -1.5f), new Vector3(1.5f, 1.5f, -1.5f)));
+        edges.Add(new Edge(new Vector3(1.5f, 1.5f, -1.5f), new Vector3(1.5f, 1.5f, 1.5f)));
+        edges.Add(new Edge(new Vector3(1.5f, 1.5f, 1.5f), new Vector3(-1.5f, 1.5f, 1.5f)));
+        edges.Add(new Edge(new Vector3(-1.5f, 1.5f, 1.5f), new Vector3(-1.5f, 1.5f, -1.5f)));
 
-        // inner tri 0 -11
-        edges.Add(new Edge(new Vector3(0, 0, 0), new Vector3(1, 0, 0)));
-        edges.Add(new Edge(new Vector3(1, 0, 0), new Vector3(1, 1, 0)));
-        edges.Add(new Edge(new Vector3(1, 1, 0), new Vector3(0, 1, 0)));
-        edges.Add(new Edge(new Vector3(0, 1, 0), new Vector3(0, 0, 0)));
+        // inner quad 12-23
+        edges.Add(new Edge(new Vector3(-0.5f, -0.5f, -0.5f), new Vector3(0.5f, -0.5f, -0.5f)));
+        edges.Add(new Edge(new Vector3(0.5f, -0.5f, -0.5f), new Vector3(0.5f, -0.5f, 0.5f)));
+        edges.Add(new Edge(new Vector3(0.5f, -0.5f, 0.5f), new Vector3(-0.5f, -0.5f, 0.5f)));
+        edges.Add(new Edge(new Vector3(-0.5f, -0.5f, 0.5f), new Vector3(-0.5f, -0.5f, -0.5f)));
 
-        edges.Add(new Edge(new Vector3(0, 0, 0), new Vector3(0, 0, 1)));
-        edges.Add(new Edge(new Vector3(1, 0, 0), new Vector3(1, 0, 1)));
-        edges.Add(new Edge(new Vector3(1, 1, 0), new Vector3(1, 1, 1)));
-        edges.Add(new Edge(new Vector3(0, 1, 0), new Vector3(0, 1, 1)));
+        edges.Add(new Edge(new Vector3(-0.5f, -0.5f, -0.5f), new Vector3(-0.5f, 0.5f, -0.5f)));
+        edges.Add(new Edge(new Vector3(0.5f, -0.5f, -0.5f), new Vector3(0.5f, 0.5f, -0.5f)));
+        edges.Add(new Edge(new Vector3(0.5f, -0.5f, 0.5f), new Vector3(0.5f, 0.5f, 0.5f)));
+        edges.Add(new Edge(new Vector3(-0.5f, -0.5f, 0.5f), new Vector3(-0.5f, 0.5f, 0.5f)));
 
-        edges.Add(new Edge(new Vector3(0, 0, 1), new Vector3(1, 0, 1)));
-        edges.Add(new Edge(new Vector3(1, 0, 1), new Vector3(1, 1, 1)));
-        edges.Add(new Edge(new Vector3(1, 1, 1), new Vector3(0, 1, 1)));
-        edges.Add(new Edge(new Vector3(0, 1, 1), new Vector3(0, 0, 1)));
+        edges.Add(new Edge(new Vector3(-0.5f, 0.5f, -0.5f), new Vector3(0.5f, 0.5f, -0.5f)));
+        edges.Add(new Edge(new Vector3(0.5f, 0.5f, -0.5f), new Vector3(0.5f, 0.5f, 0.5f)));
+        edges.Add(new Edge(new Vector3(0.5f, 0.5f, 0.5f), new Vector3(-0.5f, 0.5f, 0.5f)));
+        edges.Add(new Edge(new Vector3(-0.5f, 0.5f, 0.5f), new Vector3(-0.5f, 0.5f, -0.5f)));
 
-        // connectors 12 -19
-        edges.Add(new Edge(new Vector3(0, 0, 0), new Vector3(-1,-1,-1)));
-        edges.Add(new Edge(new Vector3(1, 0, 0), new Vector3(2, -1, -1)));
-        edges.Add(new Edge(new Vector3(1, 1, 0), new Vector3(2, 2, -1)));
-        edges.Add(new Edge(new Vector3(0, 1, 0), new Vector3(-1, 2, -1)));
+        // connectors 24-31
+        edges.Add(new Edge(new Vector3(-0.5f, -0.5f, -0.5f), new Vector3(-1.5f, -1.5f, -1.5f)));
+        edges.Add(new Edge(new Vector3(0.5f, -0.5f, -0.5f), new Vector3(1.5f, -1.5f, -1.5f)));
+        edges.Add(new Edge(new Vector3(0.5f, 0.5f, -0.5f), new Vector3(1.5f, 1.5f, -1.5f)));
+        edges.Add(new Edge(new Vector3(-0.5f, 0.5f, -0.5f), new Vector3(-1.5f, 1.5f, -1.5f)));
 
-        edges.Add(new Edge(new Vector3(0, 0, 1), new Vector3(-1, -1, 2)));
-        edges.Add(new Edge(new Vector3(1, 0, 1), new Vector3(2, -1, 2)));
-        edges.Add(new Edge(new Vector3(1, 1, 1), new Vector3(2, 2, 2)));
-        edges.Add(new Edge(new Vector3(0, 1, 1), new Vector3(-1, 2, 2)));
+        edges.Add(new Edge(new Vector3(-0.5f, -0.5f, 0.5f), new Vector3(-1.5f, -1.5f, 1.5f)));
+        edges.Add(new Edge(new Vector3(0.5f, -0.5f, 0.5f), new Vector3(1.5f, -1.5f, 1.5f)));
+        edges.Add(new Edge(new Vector3(0.5f, 0.5f, 0.5f), new Vector3(1.5f, 1.5f, 1.5f)));
+        edges.Add(new Edge(new Vector3(-0.5f, 0.5f, 0.5f), new Vector3(-1.5f, 1.5f, 1.5f)));
 
 
         RecalculateConnectedEdges();
@@ -240,7 +251,7 @@ public class Puzzle : MonoBehaviour {
         edges.Add(edges[08].cut_edge(0.5f));
         edges.Add(edges[10].cut_edge(0.5f));
         */
-        
+        /*
         edges.Add(edges[00].cut_edge(0.2f));
         edges.Add(edges[02].cut_edge(0.3f));
         edges.Add(edges[08].cut_edge(0.4f));
@@ -270,7 +281,34 @@ public class Puzzle : MonoBehaviour {
         edges.Add(edges[30].cut_edge(0.5f));
 
         edges.Add(edges[32].cut_edge(0.5f));
-        
+        */
+        edges.Add(edges[04].cut_edge(0.95f));
+        edges.Add(edges[05].cut_edge(0.05f));
+        edges.Add(edges[06].cut_edge(0.05f));
+        edges.Add(edges[07].cut_edge(0.95f));
+        edges.Add(edges[08].cut_edge(0.95f));
+        edges.Add(edges[09].cut_edge(0.95f));
+        edges.Add(edges[11].cut_edge(0.05f));
+
+        edges.Add(edges[12].cut_edge(0.95f));
+        edges.Add(edges[14].cut_edge(0.05f));
+        edges.Add(edges[15].cut_edge(0.95f));
+        edges.Add(edges[16].cut_edge(0.05f));
+        edges.Add(edges[17].cut_edge(0.05f));
+        edges.Add(edges[18].cut_edge(0.95f));
+        edges.Add(edges[19].cut_edge(0.95f));
+        edges.Add(edges[20].cut_edge(0.95f));
+        edges.Add(edges[22].cut_edge(0.05f));
+        edges.Add(edges[23].cut_edge(0.05f));
+
+        edges.Add(edges[24].cut_edge(0.95f));
+        edges.Add(edges[26].cut_edge(0.95f));
+        edges.Add(edges[27].cut_edge(0.95f));
+        edges.Add(edges[28].cut_edge(0.05f));
+        edges.Add(edges[29].cut_edge(0.95f));
+        edges.Add(edges[30].cut_edge(0.05f));
+        edges.Add(edges[31].cut_edge(0.95f));
+
     }
 
     private void CreateRandomCuts()
