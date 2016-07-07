@@ -81,46 +81,56 @@ public class Puzzle : MonoBehaviour {
             //Debug.Log(CheckComplete());
             //if (!Input.GetMouseButton(0))
             {
-                if (Input.GetKeyDown(KeyCode.Alpha1))
-                {
-                    Vector3 AB = Camera.main.transform.position - selected.transform.position;
-                    if (Mathf.Abs(AB.x) > Mathf.Abs(AB.z))
-                    {
-                        selected.RotateTween(new Vector3(0, 0, 1 * AB.x), 90);
-                    }
-                    else
-                    {
-                        selected.RotateTween(new Vector3(-1 * AB.z, 0, 0), 90);
-                    }
-                    //selected.RoundTo90();
-                    //selected.SnapToCut();
-                }
-                else if (Input.GetKeyDown(KeyCode.Q))
-                {
-                    Vector3 AB = Camera.main.transform.position - selected.transform.position;
-                    if (Mathf.Abs(AB.x) > Mathf.Abs(AB.z))
-                    {
-                        selected.RotateTween(new Vector3(0, 0, -1 * AB.x), 90);
-                    }
-                    else
-                    {
-                        selected.RotateTween(new Vector3(1 * AB.z, 0, 0), 90);
-                    }
-                    //selected.RoundTo90();
-                    //selected.SnapToCut();
-                }
-                if (Input.GetKeyDown(KeyCode.Alpha2))
+                //if (Input.GetKeyDown(KeyCode.Alpha1))
+                //{
+                //    Vector3 AB = Camera.main.transform.position - selected.transform.position;
+                //    if (Mathf.Abs(AB.x) > Mathf.Abs(AB.z))
+                //    {
+                //        selected.RotateTween(new Vector3(0, 0, 1 * AB.x), 90);
+                //    }
+                //    else
+                //    {
+                //        selected.RotateTween(new Vector3(-1 * AB.z, 0, 0), 90);
+                //    }
+                //    selected.RoundTo90();
+                //    selected.SnapToCut();
+                //}
+                //else if (Input.GetKeyDown(KeyCode.Q))
+                //{
+                //    Vector3 AB = Camera.main.transform.position - selected.transform.position;
+                //    if (Mathf.Abs(AB.x) > Mathf.Abs(AB.z))
+                //    {
+                //        selected.RotateTween(new Vector3(0, 0, -1 * AB.x), 90);
+                //    }
+                //    else
+                //    {
+                //        selected.RotateTween(new Vector3(1 * AB.z, 0, 0), 90);
+                //    }
+                //    selected.RoundTo90();
+                //    selected.SnapToCut();
+                //}
+                //if (Input.GetKeyDown(KeyCode.Alpha2))
+                //{
+                //    selected.RotateTween(new Vector3(0, 1, 0), 90);
+                //    selected.RoundTo90();
+                //    selected.SnapToCut();
+                //}
+                //else if (Input.GetKeyDown(KeyCode.Alpha3))
+                //{
+                //    selected.RotateTween(new Vector3(0, -1, 0), 90);
+                //    selected.RoundTo90();
+                //    selected.SnapToCut();
+                //}
+
+                if (Input.GetKeyDown(KeyCode.Q))
                 {
                     selected.RotateTween(new Vector3(0, 1, 0), 90);
-                    //selected.RoundTo90();
-                    //selected.SnapToCut();
                 }
-                else if (Input.GetKeyDown(KeyCode.Alpha3))
+                else if (Input.GetKeyDown(KeyCode.E))
                 {
                     selected.RotateTween(new Vector3(0, -1, 0), 90);
-                    //selected.RoundTo90();
-                    //selected.SnapToCut();
                 }
+
                 else if (Input.GetKeyDown(KeyCode.R))
                 {
                     selected.ResetRotation();
@@ -159,12 +169,28 @@ public class Puzzle : MonoBehaviour {
 
                 if (Input.GetAxis("Mouse ScrollWheel") > 0)
                 {
-                    
+                    Vector3 AB = Camera.main.transform.position - selected.transform.position;
+                    if (Mathf.Abs(AB.x) > Mathf.Abs(AB.z))
+                    {
+                        selected.RotateTween(new Vector3(0, 0, 1 * AB.x), 90);
+                    }
+                    else
+                    {
+                        selected.RotateTween(new Vector3(-1 * AB.z, 0, 0), 90);
+                    }
                 }
 
                 if (Input.GetAxis("Mouse ScrollWheel") < 0)
                 {
-                    
+                    Vector3 AB = Camera.main.transform.position - selected.transform.position;
+                    if (Mathf.Abs(AB.x) > Mathf.Abs(AB.z))
+                    {
+                        selected.RotateTween(new Vector3(0, 0, -1 * AB.x), 90);
+                    }
+                    else
+                    {
+                        selected.RotateTween(new Vector3(1 * AB.z, 0, 0), 90);
+                    }
                 }
             }
         }
@@ -414,7 +440,7 @@ public class Puzzle : MonoBehaviour {
             piece_index++;
         }
 
-        Debug.Log(pieces.Count);
+        Debug.Log(pieces.Count + " pieces");
     }
 
     private void RecordAllCuts()

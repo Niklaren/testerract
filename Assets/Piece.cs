@@ -60,6 +60,7 @@ public class Piece : MonoBehaviour {
 
             if (lerpTimer < lerpTime)
             {
+                Debug.Log("slerping");
                 lerpTimer += Time.deltaTime;
                 transform.rotation = Quaternion.Slerp(start_rot, end_rot, (lerpTimer / lerpTime));
             }
@@ -231,19 +232,17 @@ public class Piece : MonoBehaviour {
         {
             for (int j = 0; j < all_cuts.Count; j++)
             {
-                // if it not checking vs itslef and its not the same piece
-                if ((cuts[i] != all_cuts[j]) && (cuts[i].GetEdge().GetPiece() != all_cuts[j].GetEdge().GetPiece()))
+                // if its not belonging to the same piece
+                if (cuts[i].GetEdge().GetPiece() != all_cuts[j].GetEdge().GetPiece())
                 {
 
                     // if the cuts are close enough to snap together
                     if (Vector3.Distance(cuts[i].Get_cut_pos(), all_cuts[j].Get_cut_pos()) < 0.3f)
                     {
-                        // check if angles align (within tolerance)
                         all_cuts[j].GetEdge().GetPiece().RoundTo90();
                         Vector3 iF = -cuts[i].transform.forward;
                         Vector3 jF = all_cuts[j].transform.forward;
-                        float tolerance = 0.4f;
-                        if ((Mathf.Abs(iF.x - jF.x) < tolerance) && (Mathf.Abs(iF.y - jF.y) < tolerance) && (Mathf.Abs(iF.z - jF.z) < tolerance))
+                        if (DoVectorsAlign(iF, jF))
                         {
                             // if other cut is already connected to any other cut, then don't snap to it
                             List<Cut> AllOtherCuts = new List<Cut>(all_cuts);
@@ -305,15 +304,18 @@ public class Piece : MonoBehaviour {
 
                             RoundTo90();
 
-                            RotatedDelta = transform.position - NonRotatedPosition;
+                            //RotatedDelta = transform.position - NonRotatedPosition;
 
-                            Vector3 d = all_cuts[j].Get_cut_pos() - cuts[i].Get_cut_pos();
-                            //Debug.Log("this cut at " + cuts[i].Get_cut_pos().ToString("F4"));
-                            //Debug.Log("other cut at " + all_cuts[j].Get_cut_pos().ToString("F4"));
-                            //Debug.Log("move: " + d.ToString("F4"));
-                            MovePieceDelta(d);
-
-                            return;
+                            // if cuts correctly align after rotation then connect them up
+                            if (DoVectorsAlign(-cuts[i].transform.forward, jF))
+                            {
+                                Vector3 d = all_cuts[j].Get_cut_pos() - cuts[i].Get_cut_pos();
+                                //Debug.Log("this cut at " + cuts[i].Get_cut_pos().ToString("F4"));
+                                //Debug.Log("other cut at " + all_cuts[j].Get_cut_pos().ToString("F4"));
+                                Debug.Log("move: " + d.ToString("F4"));
+                                MovePieceDelta(d);
+                                return;
+                            }
                         }
                     }
                 }
@@ -416,9 +418,10 @@ public class Piece : MonoBehaviour {
         roundME.x = Mathf.Round(roundME.x / 90) * 90;
         roundME.y = Mathf.Round(roundME.y / 90) * 90;
         roundME.z = Mathf.Round(roundME.z / 90) * 90;
+        Debug.Log("angles should be snapped from " + gameObject.transform.eulerAngles.ToString("f4") + " to " + roundME.ToString("f4"));
         gameObject.transform.eulerAngles = roundME;
 
-        //Debug.Log("angles should be snapped to 90 " + gameObject.transform.eulerAngles.ToString("f4"));
+        
 
         //Vector3 p2 = gameObject.transform.position;
 
@@ -445,6 +448,17 @@ public class Piece : MonoBehaviour {
         //Vector3 diff = p1 - p2;
 
         //gameObject.transform.position += diff;
+    }
+
+    private bool DoVectorsAlign(Vector3 a, Vector3 b)
+    {
+        // check if angles align (within tolerance)
+        float tolerance = 0.4f;
+        if ((Mathf.Abs(a.x - b.x) < tolerance) && (Mathf.Abs(a.y - b.y) < tolerance) && (Mathf.Abs(a.z - b.z) < tolerance))
+        {
+            return true;
+        }
+        return false;
     }
 
     public void Freeze()
