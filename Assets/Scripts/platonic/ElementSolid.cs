@@ -15,9 +15,23 @@ public class ElementSolid : PickupableItem {
     [SerializeField]        //you could very well subclass this behaviour into an Action class that knew what items it needed.
     UseableItem[] Items;    //but for a proto (with only 1 action) I guess it's fine here.
 
+    bool complete;
+    bool locked;
+    PlatonicPuzzle puzz;
+
+    public bool InCorrectSocket()
+    {
+        return (socket == correct_socket);
+    }
+    public bool IsComplete()
+    {
+        return complete;
+    }
+
     protected override void Start()
     {
         Debug.Log("ES start");
+        puzz = FindObjectOfType<PlatonicPuzzle>();
         base.Start();
         GetComponent<ParticleSystem>().Stop();
     }
@@ -29,9 +43,12 @@ public class ElementSolid : PickupableItem {
 
     public override void Pickup ()
     {
-        base.Pickup();
-        GetComponent<ParticleSystem>().Stop();
-        socket = Socket.None;
+        if (!locked)
+        {
+            base.Pickup();
+            GetComponent<ParticleSystem>().Stop();
+            socket = Socket.None;
+        }
     }
 
     public override void Drop ()
@@ -47,11 +64,11 @@ public class ElementSolid : PickupableItem {
             if(Vector3.Distance(transform.position, sockets[i].position) < 0.4f)
             {
                 PlaceinSocket(i);
-                break;
+                CheckComplete();
+                puzz.CheckPuzzleStage();
+                return;
             }
         }
-
-        CheckComplete();
     }
 
     private void PlaceinSocket(int i)
@@ -60,39 +77,39 @@ public class ElementSolid : PickupableItem {
         transform.position = sockets[i].position;
         transform.eulerAngles = Vector3.zero;
         socket = (Socket)i;
-    }
-
-    private void LockIn()
-    {
-        PlaceinSocket((int)correct_socket);
         rb.isKinematic = true;
         rb.constraints = RigidbodyConstraints.FreezePosition;
         rb.useGravity = false;
     }
 
+    public void LockIn()
+    {
+        PlaceinSocket((int)correct_socket);
+        locked = true;
+    }
+
     public void OnComplete()
     {
         GetComponent<ParticleSystem>().Play();
+        complete = true;
+        puzz.CheckPuzzleStage();
     }
 
-    public void CheckComplete()
+    public bool CheckComplete()
     {
-        if (InCorrectSocket())
+        if (InCorrectSocket() && puzz.GetStage() > 0)
         {
             for (int i = 0; i < Items.Length; i++)
             {
                 if (Items[i].used == false)
                 {
-                    return;
+                    return false;
                 }
             }
             // if all items required are used, this element is complete
             OnComplete();
+            return true;
         }
-    }
-
-    public bool InCorrectSocket()
-    {
-        return (socket == correct_socket);
+        return false;
     }
 }

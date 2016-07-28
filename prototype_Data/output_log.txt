@@ -1,0 +1,1163 @@
+Mono path[0] = 'C:/Users/nick.taylor/Documents/Unity Projects/testerract/prototype_Data/Managed'
+Mono path[1] = 'C:/Users/nick.taylor/Documents/Unity Projects/testerract/prototype_Data/Mono'
+Mono config path = 'C:/Users/nick.taylor/Documents/Unity Projects/testerract/prototype_Data/Mono/etc'
+PlayerConnection initialized from C:/Users/nick.taylor/Documents/Unity Projects/testerract/prototype_Data (debug = 0)
+PlayerConnection initialized network socket : 0.0.0.0 55472
+Multi-casting "[IP] 192.168.0.104 [Port] 55472 [Flags] 2 [Guid] 3181085878 [EditorId] 1973792087 [Version] 1048832 [Id] WindowsPlayer(Code4) [Debug] 0" to [225.0.0.222:54997]...
+PlayerConnection already initialized - listening to [192.168.0.104:55472]
+Initialize engine version: 5.2.3f1 (f3d16a1fa2dd)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 460 (ID=0xe22)
+    Vendor:   NVIDIA
+    VRAM:     973 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\nick.taylor\Documents\Unity Projects\testerract\prototype_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\nick.taylor\Documents\Unity Projects\testerract\prototype_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\nick.taylor\Documents\Unity Projects\testerract\prototype_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\nick.taylor\Documents\Unity Projects\testerract\prototype_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\nick.taylor\Documents\Unity Projects\testerract\prototype_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\nick.taylor\Documents\Unity Projects\testerract\prototype_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\nick.taylor\Documents\Unity Projects\testerract\prototype_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\nick.taylor\Documents\Unity Projects\testerract\prototype_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\nick.taylor\Documents\Unity Projects\testerract\prototype_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\nick.taylor\Documents\Unity Projects\testerract\prototype_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\nick.taylor\Documents\Unity Projects\testerract\prototype_Data\Managed\System.Core.dll (this message is harmless)
+- Completed reload, in  0.069 seconds
+desktop: 1680x1050 60Hz; virtual: 3360x1050 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+Platform assembly: C:\Users\nick.taylor\Documents\Unity Projects\testerract\prototype_Data\Managed\System.dll (this message is harmless)
+ES start
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+ElementSolid:Start() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\ElementSolid.cs:33)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/ElementSolid.cs Line: 33)
+
+PI start
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PickupableItem:Start() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PickupableItem.cs:11)
+ElementSolid:Start() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\ElementSolid.cs:35)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PickupableItem.cs Line: 11)
+
+ES start
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+ElementSolid:Start() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\ElementSolid.cs:33)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/ElementSolid.cs Line: 33)
+
+PI start
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PickupableItem:Start() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PickupableItem.cs:11)
+ElementSolid:Start() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\ElementSolid.cs:35)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PickupableItem.cs Line: 11)
+
+ES start
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+ElementSolid:Start() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\ElementSolid.cs:33)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/ElementSolid.cs Line: 33)
+
+PI start
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PickupableItem:Start() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PickupableItem.cs:11)
+ElementSolid:Start() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\ElementSolid.cs:35)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PickupableItem.cs Line: 11)
+
+ES start
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+ElementSolid:Start() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\ElementSolid.cs:33)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/ElementSolid.cs Line: 33)
+
+PI start
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PickupableItem:Start() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PickupableItem.cs:11)
+ElementSolid:Start() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\ElementSolid.cs:35)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PickupableItem.cs Line: 11)
+
+ES start
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+ElementSolid:Start() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\ElementSolid.cs:33)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/ElementSolid.cs Line: 33)
+
+PI start
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PickupableItem:Start() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PickupableItem.cs:11)
+ElementSolid:Start() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\ElementSolid.cs:35)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PickupableItem.cs Line: 11)
+
+PI start
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PickupableItem:Start() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PickupableItem.cs:11)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PickupableItem.cs Line: 11)
+
+PI start
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PickupableItem:Start() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PickupableItem.cs:11)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PickupableItem.cs Line: 11)
+
+PI start
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PickupableItem:Start() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PickupableItem.cs:11)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PickupableItem.cs Line: 11)
+
+PI start
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PickupableItem:Start() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PickupableItem.cs:11)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PickupableItem.cs Line: 11)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 1a4c -> priority: 1 
+  Thread -> id: 1a08 -> priority: 1 
+try pickup
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:51)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 51)
+
+something hit
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:55)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 55)
+
+hit Floor
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:56)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 56)
+
+try pickup
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:51)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 51)
+
+something hit
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:55)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 55)
+
+hit Fire
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:56)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 56)
+
+do pickup
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:60)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 60)
+
+try pickup
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:51)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 51)
+
+something hit
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:55)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 55)
+
+hit Lighter
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:56)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 56)
+
+do pickup
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:60)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 60)
+
+try use
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+UseOn:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:20)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/UseOn.cs Line: 20)
+
+UseOn: TryUse
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+UseOn:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:27)
+UseOn:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:21)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/UseOn.cs Line: 27)
+
+UseableItem: TryUse
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+UseableItem:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:50)
+UseOn:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:42)
+UseOn:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:21)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/UseableItem.cs Line: 50)
+
+prerequisite not met
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+UseableItem:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:72)
+UseOn:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:42)
+UseOn:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:21)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/UseableItem.cs Line: 72)
+
+try use
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+UseOn:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:20)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/UseOn.cs Line: 20)
+
+UseOn: TryUse
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+UseOn:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:27)
+UseOn:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:21)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/UseOn.cs Line: 27)
+
+UseableItem: TryUse
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+UseableItem:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:50)
+UseOn:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:42)
+UseOn:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:21)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/UseableItem.cs Line: 50)
+
+prerequisite not met
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+UseableItem:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:72)
+UseOn:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:42)
+UseOn:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:21)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/UseableItem.cs Line: 72)
+
+try pickup
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:51)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 51)
+
+something hit
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:55)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 55)
+
+hit Water
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:56)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 56)
+
+do pickup
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:60)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 60)
+
+try pickup
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:51)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 51)
+
+something hit
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:55)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 55)
+
+hit WaterBottle
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:56)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 56)
+
+do pickup
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:60)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 60)
+
+try use
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+UseOn:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:20)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/UseOn.cs Line: 20)
+
+UseOn: TryUse
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+UseOn:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:27)
+UseOn:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:21)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/UseOn.cs Line: 27)
+
+UseableItem: TryUse
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+UseableItem:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:50)
+UseOn:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:42)
+UseOn:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:21)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/UseableItem.cs Line: 50)
+
+UseOn: use
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+UseOn:Use() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:47)
+UseableItem:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:77)
+UseOn:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:42)
+UseOn:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:21)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/UseOn.cs Line: 47)
+
+Useable: use
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+UseableItem:Use() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:83)
+UseOn:Use() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:51)
+UseableItem:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:77)
+UseOn:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:42)
+UseOn:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:21)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/UseableItem.cs Line: 83)
+
+try pickup
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:51)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 51)
+
+something hit
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:55)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 55)
+
+hit Air
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:56)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 56)
+
+do pickup
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:60)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 60)
+
+try pickup
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:51)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 51)
+
+something hit
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:55)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 55)
+
+hit Ether
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:56)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 56)
+
+do pickup
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:60)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 60)
+
+try pickup
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:51)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 51)
+
+something hit
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:55)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 55)
+
+hit Earth
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:56)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 56)
+
+do pickup
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:60)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 60)
+
+stage 0 complete
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPuzzle:CheckStage0Complete() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPuzzle.cs:59)
+PlatonicPuzzle:CheckPuzzleStage() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPuzzle.cs:38)
+ElementSolid:Place() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\ElementSolid.cs:68)
+ElementSolid:Drop() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\ElementSolid.cs:57)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:38)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPuzzle.cs Line: 59)
+
+stage 1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPuzzle:CheckPuzzleStage() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPuzzle.cs:40)
+ElementSolid:Place() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\ElementSolid.cs:68)
+ElementSolid:Drop() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\ElementSolid.cs:57)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:38)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPuzzle.cs Line: 40)
+
+try pickup
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:51)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 51)
+
+something hit
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:55)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 55)
+
+hit PlantPot
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:56)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 56)
+
+do pickup
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:60)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 60)
+
+try use
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+UseOn:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:20)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/UseOn.cs Line: 20)
+
+UseOn: TryUse
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+UseOn:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:27)
+UseOn:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:21)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/UseOn.cs Line: 27)
+
+UseableItem: TryUse
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+UseableItem:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:50)
+UseOn:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:42)
+UseOn:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:21)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/UseableItem.cs Line: 50)
+
+UseOn: use
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+UseOn:Use() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:47)
+UseableItem:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:77)
+UseOn:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:42)
+UseOn:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:21)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/UseOn.cs Line: 47)
+
+Useable: use
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+UseableItem:Use() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:83)
+UseOn:Use() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:51)
+UseableItem:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:77)
+UseOn:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:42)
+UseOn:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:21)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/UseableItem.cs Line: 83)
+
+try pickup
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:51)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 51)
+
+something hit
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:55)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 55)
+
+hit Floor
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:56)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 56)
+
+try pickup
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:51)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 51)
+
+something hit
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:55)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 55)
+
+hit PaintThinner
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:56)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 56)
+
+do pickup
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:60)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 60)
+
+try use
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+UseOn:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:20)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/UseOn.cs Line: 20)
+
+UseOn: TryUse
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+UseOn:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:27)
+UseOn:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:21)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/UseOn.cs Line: 27)
+
+UseableItem: TryUse
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+UseableItem:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:50)
+UseOn:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:42)
+UseOn:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:21)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/UseableItem.cs Line: 50)
+
+UseOn: use
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+UseOn:Use() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:47)
+UseableItem:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:77)
+UseOn:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:42)
+UseOn:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:21)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/UseOn.cs Line: 47)
+
+Useable: use
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+UseableItem:Use() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:83)
+UseOn:Use() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:51)
+UseableItem:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:77)
+UseOn:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:42)
+UseOn:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:21)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/UseableItem.cs Line: 83)
+
+try pickup
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:51)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 51)
+
+something hit
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:55)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 55)
+
+hit Lighter
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:56)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 56)
+
+do pickup
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPlayerScript:TryPickup() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:60)
+PlatonicPlayerScript:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPlayerScript.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPlayerScript.cs Line: 60)
+
+try use
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+UseOn:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:20)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/UseOn.cs Line: 20)
+
+UseOn: TryUse
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+UseOn:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:27)
+UseOn:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:21)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/UseOn.cs Line: 27)
+
+UseableItem: TryUse
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+UseableItem:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:50)
+UseOn:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:42)
+UseOn:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:21)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/UseableItem.cs Line: 50)
+
+UseOn: use
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+UseOn:Use() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:47)
+UseableItem:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:77)
+UseOn:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:42)
+UseOn:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:21)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/UseOn.cs Line: 47)
+
+Useable: use
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+UseableItem:Use() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:83)
+UseOn:Use() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:51)
+UseableItem:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:77)
+UseOn:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:42)
+UseOn:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:21)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/UseableItem.cs Line: 83)
+
+stage 1 complete
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPuzzle:CheckStage1Complete() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPuzzle.cs:85)
+PlatonicPuzzle:CheckPuzzleStage() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPuzzle.cs:43)
+ElementSolid:OnComplete() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\ElementSolid.cs:95)
+ElementSolid:CheckComplete() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\ElementSolid.cs:110)
+UseableItem:Use() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:88)
+UseOn:Use() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:51)
+UseableItem:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:77)
+UseOn:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:42)
+UseOn:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:21)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPuzzle.cs Line: 85)
+
+stage 2
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPuzzle:CheckPuzzleStage() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPuzzle.cs:45)
+ElementSolid:OnComplete() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\ElementSolid.cs:95)
+ElementSolid:CheckComplete() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\ElementSolid.cs:110)
+UseableItem:Use() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:88)
+UseOn:Use() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:51)
+UseableItem:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:77)
+UseOn:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:42)
+UseOn:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseOn.cs:21)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPuzzle.cs Line: 45)
+
+try use
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+UseableItem:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:40)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/UseableItem.cs Line: 40)
+
+UseableItem: TryUse
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+UseableItem:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:50)
+UseableItem:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:41)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/UseableItem.cs Line: 50)
+
+Useable: use
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+UseableItem:Use() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:83)
+UseableItem:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:77)
+UseableItem:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:41)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/UseableItem.cs Line: 83)
+
+raise
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Raise() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:49)
+WinchAction:Perform() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:39)
+UseableItem:Use() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:87)
+UseableItem:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:77)
+UseableItem:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:41)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 49)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+lerping
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:24)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 24)
+
+raised
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:29)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 29)
+
+try use
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+UseableItem:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:40)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/UseableItem.cs Line: 40)
+
+UseableItem: TryUse
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+UseableItem:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:50)
+UseableItem:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:41)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/UseableItem.cs Line: 50)
+
+Useable: use
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+UseableItem:Use() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:83)
+UseableItem:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:77)
+UseableItem:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:41)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/UseableItem.cs Line: 83)
+
+release
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+WinchAction:Release() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:60)
+WinchAction:Perform() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\WinchAction.cs:41)
+UseableItem:Use() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:87)
+UseableItem:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:77)
+UseableItem:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:41)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/WinchAction.cs Line: 60)
+
+stage 2 complete
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPuzzle:CheckStage2Complete() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPuzzle.cs:103)
+PlatonicPuzzle:CheckPuzzleStage() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPuzzle.cs:48)
+ElementSolid:OnComplete() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\ElementSolid.cs:95)
+ElementSolid:CheckComplete() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\ElementSolid.cs:110)
+UseableItem:Use() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:88)
+UseableItem:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:77)
+UseableItem:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:41)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPuzzle.cs Line: 103)
+
+stage 3
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+PlatonicPuzzle:CheckPuzzleStage() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\PlatonicPuzzle.cs:50)
+ElementSolid:OnComplete() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\ElementSolid.cs:95)
+ElementSolid:CheckComplete() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\ElementSolid.cs:110)
+UseableItem:Use() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:88)
+UseableItem:TryUse() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:77)
+UseableItem:Update() (at C:\Users\nick.taylor\Documents\Unity Projects\testerract\Assets\Scripts\platonic\UseableItem.cs:41)
+ 
+(Filename: C:/Users/nick.taylor/Documents/Unity Projects/testerract/Assets/Scripts/platonic/PlatonicPuzzle.cs Line: 50)
+

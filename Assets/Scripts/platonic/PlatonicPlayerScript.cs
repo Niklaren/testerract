@@ -48,13 +48,16 @@ public class PlatonicPlayerScript : MonoBehaviour {
 
     private void TryPickup()
     {
-        Debug.Log("raycast");
+        Debug.Log("try pickup");
         RaycastHit hit;
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 5.0f))
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 5.0f, ~(1 << 8))) //layer mask ~1<<8 = ignore player
         {
+            Debug.Log("something hit");
+            Debug.Log("hit " + hit.collider.gameObject.name);
             PickupableItem PI = hit.collider.GetComponent<PickupableItem>();
             if (PI != null)
             {
+                Debug.Log("do pickup");
                 carryObject = PI;
                 PI.Pickup();
             }

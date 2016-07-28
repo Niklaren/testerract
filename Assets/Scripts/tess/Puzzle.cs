@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 public class Puzzle : MonoBehaviour {
 
-    List<Piece> pieces = new List<Piece>();
+    protected List<Piece> pieces = new List<Piece>();
     public Piece selected;
     public Piece core;
 
-    List<Edge> edges = new List<Edge>();
+    protected List<Edge> edges = new List<Edge>();
 
     List<Cut> all_cuts = new List<Cut>();
     public List<Cut> Get_all_cuts() {   if (all_cuts.Count == 0) RecordAllCuts();
@@ -390,7 +390,7 @@ public class Puzzle : MonoBehaviour {
         }
     }
 
-    private void RecalculatePieces()
+    protected void RecalculatePieces()
     {
         RecalculateConnectedEdges();
 

@@ -5,15 +5,26 @@ using System.Collections.Generic;
 public class UseableItem : MonoBehaviour {
 
     int useOrder;
-    public ElementSolid useOn;
+    public ElementSolid correctTarget;
 
     [SerializeField]
     List<UseableItem> othersRequired = new List<UseableItem>();
     public bool used;
 
-	// Use this for initialization
-	void Start () {
+    [SerializeField]
+    IAction action;
 
+    [SerializeField]
+    AudioClip success;
+    [SerializeField]
+    AudioClip failure;
+
+    AudioSource audioSource;
+
+    // Use this for initialization
+    virtual protected void Start () {
+        action = GetComponent<IAction>();
+        audioSource = gameObject.AddComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -37,17 +48,20 @@ public class UseableItem : MonoBehaviour {
     virtual protected bool TryUse()
     {
         Debug.Log("UseableItem: TryUse");
+
+        // posibly require puzzle to not be in stage 0?
+
         if (used)
         {
             Debug.Log(" already used");
-            // FailToUse()
+            FailToUse();
             return false;
         }
 
-        if(!useOn.InCorrectSocket())
+        if(!correctTarget.InCorrectSocket())
         {
             Debug.Log("target not in socket");
-            // FailToUse()
+            FailToUse();
             return false;
         }
 
@@ -56,7 +70,7 @@ public class UseableItem : MonoBehaviour {
             if (!othersRequired[i].used)
             {
                 Debug.Log("prerequisite not met");
-                // Fail To Use()
+                FailToUse();
                 return false;
             }
         }
@@ -68,12 +82,16 @@ public class UseableItem : MonoBehaviour {
     {
         Debug.Log("Useable: use");
         used = true;
-        useOn.CheckComplete();
+        audioSource.clip = success;
+        audioSource.Play();
+        action.Perform();
+        correctTarget.CheckComplete();
     }
 
-    void FailToUse()
+    protected void FailToUse()
     {
-
+        audioSource.clip = failure;
+        audioSource.Play();
     }
 
     public void Remove()

@@ -45,13 +45,17 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\pentagram\PentagramPuzzle.cs" />
      <Compile Include="Assets\Scripts\platonic\ElementSolid.cs" />
+     <Compile Include="Assets\Scripts\platonic\IAction.cs" />
+     <Compile Include="Assets\Scripts\platonic\InheritColourAction.cs" />
      <Compile Include="Assets\Scripts\platonic\PickupableItem.cs" />
      <Compile Include="Assets\Scripts\platonic\PlatonicPlayerScript.cs" />
      <Compile Include="Assets\Scripts\platonic\PlatonicPuzzle.cs" />
      <Compile Include="Assets\Scripts\platonic\UseAlone.cs" />
      <Compile Include="Assets\Scripts\platonic\UseOn.cs" />
      <Compile Include="Assets\Scripts\platonic\UseableItem.cs" />
+     <Compile Include="Assets\Scripts\platonic\WinchAction.cs" />
      <Compile Include="Assets\Scripts\tess\Cut.cs" />
      <Compile Include="Assets\Scripts\tess\DragPiece.cs" />
      <Compile Include="Assets\Scripts\tess\Edge.cs" />

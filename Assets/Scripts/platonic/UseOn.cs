@@ -3,13 +3,14 @@ using System.Collections;
 
 public class UseOn : UseableItem {
 
-    int LayerMask = 1 << 9;
+    int LayerMask = 1 << 9; // use on pieces
 
     PickupableItem p;
 
     // Use this for initialization
-    void Start () {
+    protected override void Start () {
         p = gameObject.AddComponent<PickupableItem>();
+        base.Start();
 	}
 	
 	// Update is called once per frame
@@ -31,10 +32,10 @@ public class UseOn : UseableItem {
             ES = hit.collider.GetComponent<ElementSolid>();
         }
 
-        if (ES != useOn)
+        if (ES != correctTarget)
         {
             Debug.Log("incorrect target");
-            // FailToUse()
+            FailToUse();
             return false;
         }
 
@@ -45,8 +46,8 @@ public class UseOn : UseableItem {
     {
         Debug.Log("UseOn: use");
         p.Drop();
-        //Destroy(p);
-        //Remove();
+        Destroy(p);
+        Remove();
         base.Use();
     }
 }
