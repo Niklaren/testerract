@@ -17,6 +17,8 @@ public class Piece : MonoBehaviour {
     //Collider[] colliders;
     List<Collider> colliders = new List<Collider>();
 
+    List<GameObject> spheres = new List<GameObject>();
+
     List<Cut> cuts = new List<Cut>();
 
     Puzzle puzzle;
@@ -88,7 +90,7 @@ public class Piece : MonoBehaviour {
 
             foreach (Collider collider in colliders)
             {
-                GameObject player = GameObject.Find("RigidBodyFPSController");
+                GameObject player = GameObject.Find("FPSController");//GameObject.Find("RigidBodyFPSController");
                 while (collider.bounds.Intersects(player.GetComponent<Collider>().bounds))
                 {
                     Vector3 translation = (cam.gameObject.transform.forward * 0.05f);
@@ -132,20 +134,23 @@ public class Piece : MonoBehaviour {
     {
         RecordCuts();
         JoinUnusedCuts();
-        RecordCuts();
+        //RecordCuts();
         RecordCentre();
 
         for (int i = 0; i < edges.Count; i++)
         {
+            edges[i].AddCutOnUnconnected();
+
             GameObject EdgeObject = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
 
-            EdgeObject.transform.position = edges[i].Get_Position()-LocalCentre;   //Get_point_a();  //
+            EdgeObject.transform.position = edges[i].Get_Position();// + (edges[i].Get_Position() - LocalCentre);   //Get_point_a();  //
             EdgeObject.transform.up = edges[i].Get_point_b() - edges[i].Get_point_a();
             EdgeObject.transform.localScale = new Vector3(0.1f, Vector3.Distance(edges[i].Get_point_a(), edges[i].Get_point_b()) / 2, 0.1f);
 
             EdgeObject.transform.SetParent(gameObject.transform);
 
             EdgeObject.name = "cylinder" + edges[i].GetID();
+            EdgeObject.layer = 9;
 
             //parent cuts to edge
             if (edges[i].Get_cut_a() != null)
@@ -153,14 +158,60 @@ public class Piece : MonoBehaviour {
                 edges[i].Get_cut_a().gameObject.transform.SetParent(EdgeObject.transform);
                 edges[i].Get_cut_a().SetAlignment(EdgeObject.transform);
             }
+            else
+            {
+                bool needs_awesome_sphere = true;
+                for (int j = 0; j < spheres.Count; j++)
+                {
+                    if (spheres[j].transform.position == edges[i].Get_point_a())
+                    {
+                        needs_awesome_sphere = false;
+                        break;
+                    }
+                }
+                if (needs_awesome_sphere)
+                {
+                    GameObject SphereObject = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                    SphereObject.transform.position = edges[i].Get_point_a();
+                    SphereObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+
+                    SphereObject.transform.SetParent(gameObject.transform);
+
+                    spheres.Add(SphereObject);
+                }
+            }
             if (edges[i].Get_cut_b() != null)
             {
                 edges[i].Get_cut_b().gameObject.transform.SetParent(EdgeObject.transform);
                 edges[i].Get_cut_b().SetAlignment(EdgeObject.transform);
             }
+            else
+            {
+                bool needs_awesome_sphere = true;
+                for (int j = 0; j < spheres.Count; j++)
+                {
+                    if (spheres[j].transform.position == edges[i].Get_point_b())
+                    {
+                        needs_awesome_sphere = false;
+                        break;
+                    }
+                }
+                if (needs_awesome_sphere)
+                {
+                    GameObject SphereObject = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                    SphereObject.transform.position = edges[i].Get_point_b();
+                    SphereObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+
+                    SphereObject.transform.SetParent(gameObject.transform);
+
+                    spheres.Add(SphereObject);
+                }
+            }
 
             colliders.Add(EdgeObject.GetComponent<Collider>());
         }
+
+        RecordCuts();
         return this;
     }
 
@@ -231,6 +282,8 @@ public class Piece : MonoBehaviour {
 
     public void SnapToCut()
     {
+        Debug.Log("snaptocut");
+
         CheckForSnap();
 
         puzzle.ConfigurePiecePhysics();
@@ -241,6 +294,9 @@ public class Piece : MonoBehaviour {
     private void CheckForSnap()
     {
         List<Cut> all_cuts = puzzle.Get_all_cuts();
+
+        Debug.Log("cuts.Count " + cuts.Count);
+        Debug.Log("allcuts.Count " + all_cuts.Count);
 
         for (int i = 0; i < cuts.Count; i++)
         {
@@ -528,7 +584,7 @@ public class Piece : MonoBehaviour {
         }
     }
 
-    private void DoDeSelection()
+    public void DoDeSelection()
     {
         puzzle.selected = null;
         selected = false;

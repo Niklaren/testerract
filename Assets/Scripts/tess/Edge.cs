@@ -12,30 +12,39 @@ public class Edge : ScriptableObject {
     public void SetPiece(Piece p) { belongsTo = p; }
     public Piece GetPiece() { return belongsTo; }
 
-    //Vector3 point_a;
+    public Vector3 __point_a;
     public Vector3 Get_point_a()
     {
         Vector3 piece_offset = Vector3.zero;
-        if (belongsTo != null)
-            piece_offset = belongsTo.transform.position;
+        //if (belongsTo != null)
+        //{
+        //    piece_offset = belongsTo.transform.position;
+        //    Debug.Log("piece offset is : " + piece_offset + " for piece " + belongsTo.name);
+        //}
 
         if (cut_a == null)
+        {
             return orig_point_a + piece_offset;
+        }
         else
         {
             Vector3 point_a = orig_point_a + ((orig_point_b - orig_point_a) * cut_a.percent_across_orig);
             return point_a + piece_offset;
-
         }
     }
     public Vector3 Get_point_b()
     {
         Vector3 piece_offset = Vector3.zero;
-        if (belongsTo != null)
-            piece_offset = belongsTo.transform.position;
+        //if (belongsTo != null)
+        //{
+        //    piece_offset = belongsTo.transform.position;
+        //    Debug.Log("piece offset is : " + piece_offset + " for piece " + belongsTo.name);
+        //}
 
         if (cut_b == null)
+        {
             return orig_point_b + piece_offset;
+        }
         else
         {
             Vector3 point_b = orig_point_a + ((orig_point_b - orig_point_a) * cut_b.percent_across_orig);
@@ -43,7 +52,7 @@ public class Edge : ScriptableObject {
 
         }
     }
-    //Vector3 point_b;
+    public Vector3 __point_b;
     //public Vector3 Get_point_b() { return point_b; }
     public Vector3 Get_Position() { return (Get_point_a() + Get_point_b()) / 2; }
 
@@ -79,10 +88,10 @@ public class Edge : ScriptableObject {
 
     public Edge(Vector3 p_point_a, Vector3 p_point_b)
     {
-        //orig_point_a = point_a = p_point_a;
-        // orig_point_b = point_b = p_point_b;
-        orig_point_a = p_point_a;
-        orig_point_b =  p_point_b;
+        orig_point_a = __point_a = p_point_a;
+        orig_point_b = __point_b = p_point_b;
+        //orig_point_a = p_point_a;
+        //orig_point_b =  p_point_b;
         ID = total_edges++;
     }
 
@@ -170,6 +179,9 @@ public class Edge : ScriptableObject {
         e.set_connected_edges_b(connected_edges_b);
         connected_edges_b.Clear();
 
+        e.percent_of_orig = percent_of_orig * (1 - d);
+        percent_of_orig *= d;
+
         GameObject cut_A = new GameObject();
         GameObject cut_B = new GameObject();
 
@@ -188,13 +200,49 @@ public class Edge : ScriptableObject {
         Get_cut_b().Set_cut_pos(cut_pos);
         e.Get_cut_a().Set_cut_pos(cut_pos);
 
-        e.percent_of_orig = percent_of_orig * (1 - d);
-        percent_of_orig *= d;
-
         e.Get_cut_a().percent_across_orig = Get_cut_b().percent_across_orig = 1.0f - e.percent_of_orig;
 
         return e;
 
+    }
+
+    public void AddCutOnUnconnected()
+    {
+        if (connected_edges_a.Count <= 0 && cut_a == null)
+        {
+            Debug.Log("add cut to unconnected a");
+
+            GameObject cut_A = new GameObject();
+
+            set_cut_a(cut_A.AddComponent<Cut>());
+
+            string cut_name = "Cut " + cut_a.GetID();
+            cut_A.name = cut_name;
+
+            cut_a.SetEdge(this);
+
+            cut_a.percent_across_orig = 0;
+
+            Get_cut_a().Set_cut_pos(orig_point_a);
+        }
+
+        if (connected_edges_b.Count <= 0 && cut_b == null)
+        {
+            Debug.Log("add cut to unconnected b");
+
+            GameObject cut_B = new GameObject();
+
+            set_cut_b(cut_B.AddComponent<Cut>());
+
+            string cut_name = "Cut " + cut_b.GetID();
+            cut_B.name = cut_name;
+
+            cut_b.SetEdge(this);
+
+            cut_b.percent_across_orig = 1;
+
+            Get_cut_b().Set_cut_pos(orig_point_b);
+        }
     }
 	
     public bool set_cut_a(Cut c)
@@ -216,10 +264,13 @@ public class Edge : ScriptableObject {
 
     public bool join_cuts(Edge e)
     {
+        // if both edges have cuts
         if (cut_b != null && e.Get_cut_a() != null)
         {
             if (cut_b.GetID() == e.Get_cut_a().GetID())
             {
+            //if (Get_point_b() == e.Get_point_a())
+            //{
                 percent_of_orig += e.percent_of_orig;
 
                 //connected_edges_b = e. // this should be done by check_connected_edge
@@ -236,6 +287,8 @@ public class Edge : ScriptableObject {
         {
             if (cut_a.GetID() == e.Get_cut_b().GetID())
             {
+            //if (Get_point_a() == e.Get_point_b())
+            //{
                 percent_of_orig += e.percent_of_orig;
 
                 //connected_edges_b = e. // this should be done by check_connected_edge

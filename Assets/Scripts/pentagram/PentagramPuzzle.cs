@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class PentagramPuzzle : Puzzle {
 
+    public Collider wall;
+
     // Use this for initialization
     void Start () {
         CreateAllPipes();
@@ -12,8 +14,17 @@ public class PentagramPuzzle : Puzzle {
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (Cursor.lockState != CursorLockMode.Locked)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+
+
+        }
+    }
 
     void CreateAllPipes()
     {
@@ -66,8 +77,5 @@ public class PentagramPuzzle : Puzzle {
         {
             pieces[i].CreatePieceObject().gameObject.transform.SetParent(transform);
         }
-
-        core = pieces[0];
-        core.SetCore();
     }
 }

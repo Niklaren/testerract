@@ -45,6 +45,8 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\pentagram\PentagramPipe.cs" />
+     <Compile Include="Assets\Scripts\pentagram\PentagramPlayer.cs" />
      <Compile Include="Assets\Scripts\pentagram\PentagramPuzzle.cs" />
      <Compile Include="Assets\Scripts\platonic\ElementSolid.cs" />
      <Compile Include="Assets\Scripts\platonic\IAction.cs" />

@@ -331,7 +331,7 @@ public class Puzzle : MonoBehaviour {
         edges.Add(edges[26].cut_edge(0.95f));
         edges.Add(edges[27].cut_edge(0.95f));
         edges.Add(edges[28].cut_edge(0.05f));
-        edges.Add(edges[29].cut_edge(0.95f));
+        //edges.Add(edges[29].cut_edge(0.95f));
         edges.Add(edges[30].cut_edge(0.05f));
         edges.Add(edges[31].cut_edge(0.95f));
 
@@ -387,6 +387,7 @@ public class Puzzle : MonoBehaviour {
                 if (edges[i].check_connected_edge(edges[j]))
                     Debug.Log("connect " + i + " and " + j);
             }
+            //edges[i].AddCutOnUnconnected();
         }
     }
 
