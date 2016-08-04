@@ -32,7 +32,7 @@ public class PentagramPlayer : MonoBehaviour {
                 RaycastHit hit;
                 if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 5.0f, (1 << 9))) //layer mask: only piece
                 {
-                    Debug.Log("something hit");
+                    //Debug.Log("something hit");
                     Debug.Log("hit " + hit.collider.gameObject.name);
                     PentagramPipe pipe = hit.collider.GetComponentInParent<PentagramPipe>();
                     if (pipe != null)
@@ -64,6 +64,22 @@ public class PentagramPlayer : MonoBehaviour {
             //    carryObject.GetComponent<PickupableItem>().Drop();
             //    carryObject = null;
             //}
+        }
+
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 5.0f))
+            {
+                //Debug.Log("try use something");
+                Debug.Log("try use " + hit.collider.gameObject.name);
+                Saw saw = hit.collider.GetComponent<Saw>();
+                if (saw != null)
+                {
+                    Debug.Log("saw use");
+                    saw.TryUse();
+                }
+            }
         }
     }
 }

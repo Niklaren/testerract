@@ -23,6 +23,8 @@ public class Puzzle : MonoBehaviour {
     [SerializeField]
     int random_seed;
 
+    public bool complete;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -484,14 +486,15 @@ public class Puzzle : MonoBehaviour {
             if (!c.IfAnyCutsTouchThis(all_cuts))
             {
                 //Debug.Log("incomplete");
-                return false;
+                return complete;
             }
         }
 
         Debug.Log("complete");
         foreach (Piece p in pieces)
             p.SetCore();
-        return true;
+        complete = true;
+        return complete;
     }
 
     public void ConfigurePiecePhysics()

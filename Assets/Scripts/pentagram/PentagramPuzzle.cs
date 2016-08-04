@@ -29,16 +29,9 @@ public class PentagramPuzzle : Puzzle {
     void CreateAllPipes()
     {
         //core 1, 2 & 3
-        edges.Add(new Edge(new Vector3(3.9f, 1.9f, 12.3f), new Vector3(4.0f, 1.9f, 12.3f)));
-        edges.Add(new Edge(new Vector3(0.0f, 1.6f, 12.3f), new Vector3(0.2f, 1.6f, 12.3f)));
-        edges.Add(new Edge(new Vector3(0.5f, 0.5f, 12.3f), new Vector3(0.0f, 0.5f, 12.3f)));
-        
-        //Piece[] existingPieces = GetComponentsInChildren<Piece>();
-        //for (int i = 0; i < existingPieces.Length; i++)
-        //{
-        //    edges.AddRange(existingPieces[i].Get_edges());
-        //}
-        //Debug.Log("edges pre-existing: " + edges.Count);
+        edges.Add(new Edge(new Vector3(3.9f, 1.9f, 12.4f), new Vector3(4.0f, 1.9f, 12.4f)));
+        edges.Add(new Edge(new Vector3(0.0f, 1.6f, 12.4f), new Vector3(0.2f, 1.6f, 12.4f)));
+        edges.Add(new Edge(new Vector3(0.5f, 0.5f, 12.4f), new Vector3(0.0f, 0.5f, 12.4f)));
 
         // A
         edges.Add(new Edge(new Vector3(3.9f, 1.9f, 0.0f), new Vector3(3.7f, 1.9f, 0.0f)));
