@@ -139,7 +139,7 @@ public class Piece : MonoBehaviour {
 
         for (int i = 0; i < edges.Count; i++)
         {
-            edges[i].AddCutOnUnconnected();
+            //edges[i].AddCutOnUnconnected();
 
             GameObject EdgeObject = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
 
@@ -227,7 +227,7 @@ public class Piece : MonoBehaviour {
                 {
                     if(c1.GetID() == c2.GetID())
                     {
-                        Debug.Log("try joining now. cut: "+ c1.GetID());
+                        Debug.Log("try joining now. cut: "+ c1.GetID() + " with " +c2.GetID());
                         c1.GetEdge().join_cuts(c2.GetEdge());
                     }
                 }
@@ -286,7 +286,7 @@ public class Piece : MonoBehaviour {
 
         CheckForSnap();
 
-        puzzle.ConfigurePiecePhysics();
+        
 
         puzzle.CheckComplete();
     }
@@ -400,7 +400,7 @@ public class Piece : MonoBehaviour {
         {
             gameObject.transform.position = v;
             //gameObject.transform.position += RotatedDelta;
-            gameObject.transform.position -= LocalCentre;
+            //gameObject.transform.position -= LocalCentre;
 
             //SnapToCut();
             NonRotatedPosition = v + RotatedDelta;
@@ -554,7 +554,7 @@ public class Piece : MonoBehaviour {
 
     public void Freeze()
     {
-        rb.isKinematic = true;
+        //rb.isKinematic = true;
         rb.constraints = RigidbodyConstraints.FreezeAll;
     }
 
@@ -562,7 +562,7 @@ public class Piece : MonoBehaviour {
     {
         if (!core)
         {
-            rb.isKinematic = false;
+            //rb.isKinematic = false;
             rb.constraints = RigidbodyConstraints.None;
         }
     }
@@ -581,6 +581,7 @@ public class Piece : MonoBehaviour {
         {
             DoDeSelection();
             SnapToCut();
+            puzzle.ConfigurePiecePhysics();
         }
     }
 

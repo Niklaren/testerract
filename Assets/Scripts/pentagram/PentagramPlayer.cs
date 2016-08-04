@@ -4,9 +4,10 @@ using System.Collections;
 public class PentagramPlayer : MonoBehaviour {
 
     Camera cam;
-    PentagramPipe carriedPipe;
+    public PentagramPipe carriedPipe;
+    public PentagramPipe lastSelectedPipe;
 
-	void Start () {
+    void Start () {
         cam = Camera.main;
     }
 	
@@ -43,7 +44,7 @@ public class PentagramPlayer : MonoBehaviour {
                         //    carriedPipe.AnotherSelected();
                         //    carriedPipe = null;
                         //}
-                        carriedPipe = pipe;
+                        lastSelectedPipe = carriedPipe = pipe;
                         pipe.OnClick();
                     }
                 }

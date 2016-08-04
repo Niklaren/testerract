@@ -387,7 +387,14 @@ public class Puzzle : MonoBehaviour {
                 if (edges[i].check_connected_edge(edges[j]))
                     Debug.Log("connect " + i + " and " + j);
             }
-            //edges[i].AddCutOnUnconnected();
+        }
+    }
+
+    protected void AddCutsOnUnconnected()
+    {
+        for (int i = 0; i < edges.Count; i++)
+        {
+            edges[i].AddCutOnUnconnected();
         }
     }
 
@@ -489,6 +496,7 @@ public class Puzzle : MonoBehaviour {
 
     public void ConfigurePiecePhysics()
     {
+        Debug.Log("puzz config physics");
         foreach(Piece p in pieces)
         {
             if(p.IsPieceConnected())

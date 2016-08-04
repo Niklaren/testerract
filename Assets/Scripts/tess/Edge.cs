@@ -208,9 +208,10 @@ public class Edge : ScriptableObject {
 
     public void AddCutOnUnconnected()
     {
+        Debug.Log("check for unconnected on edge " + ID);
         if (connected_edges_a.Count <= 0 && cut_a == null)
         {
-            Debug.Log("add cut to unconnected a");
+            Debug.Log("add cut to unconnected a. on edge " +ID);
 
             GameObject cut_A = new GameObject();
 
@@ -228,7 +229,7 @@ public class Edge : ScriptableObject {
 
         if (connected_edges_b.Count <= 0 && cut_b == null)
         {
-            Debug.Log("add cut to unconnected b");
+            Debug.Log("add cut to unconnected b. on edge " + ID);
 
             GameObject cut_B = new GameObject();
 
@@ -267,17 +268,21 @@ public class Edge : ScriptableObject {
         // if both edges have cuts
         if (cut_b != null && e.Get_cut_a() != null)
         {
-            if (cut_b.GetID() == e.Get_cut_a().GetID())
-            {
-            //if (Get_point_b() == e.Get_point_a())
+            //Debug.Log("join: point b at: " + Get_point_b() + "cut b at " + Get_cut_b().Get_cut_pos());
+            //Debug.Log("join: e.point a at: " + e.Get_point_a() + "e.cut a at " + e.Get_cut_a().Get_cut_pos());
+
+            //if (cut_b.GetID() == e.Get_cut_a().GetID())
             //{
+
+            if (Get_point_b() == e.Get_point_a())
+            {
                 percent_of_orig += e.percent_of_orig;
 
                 //connected_edges_b = e. // this should be done by check_connected_edge
 
                 Debug.Log("delete edge " + e.ID);
                 e.Delete_cut_a();
-                e.Delete();      // delete unused edge
+                e.Delete();      // delete unused edge // does this do anything even??
                 Delete_cut_b();
 
                 return true;
@@ -285,10 +290,13 @@ public class Edge : ScriptableObject {
         }
         if (cut_a != null && e.Get_cut_b() != null)
         {
-            if (cut_a.GetID() == e.Get_cut_b().GetID())
-            {
-            //if (Get_point_a() == e.Get_point_b())
+            //Debug.Log("join: e.point b at: " + e.Get_point_b() + "e.cut b at " + e.Get_cut_b().Get_cut_pos());
+            //Debug.Log("join: point a at: " + Get_point_a() + "cut a at " + Get_cut_a().Get_cut_pos());
+
+            //if (cut_a.GetID() == e.Get_cut_b().GetID())
             //{
+            if (Get_point_a() == e.Get_point_b())
+            {
                 percent_of_orig += e.percent_of_orig;
 
                 //connected_edges_b = e. // this should be done by check_connected_edge

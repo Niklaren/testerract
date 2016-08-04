@@ -28,6 +28,18 @@ public class PentagramPuzzle : Puzzle {
 
     void CreateAllPipes()
     {
+        //core 1, 2 & 3
+        edges.Add(new Edge(new Vector3(3.9f, 1.9f, 12.3f), new Vector3(4.0f, 1.9f, 12.3f)));
+        edges.Add(new Edge(new Vector3(0.0f, 1.6f, 12.3f), new Vector3(0.2f, 1.6f, 12.3f)));
+        edges.Add(new Edge(new Vector3(0.5f, 0.5f, 12.3f), new Vector3(0.0f, 0.5f, 12.3f)));
+        
+        //Piece[] existingPieces = GetComponentsInChildren<Piece>();
+        //for (int i = 0; i < existingPieces.Length; i++)
+        //{
+        //    edges.AddRange(existingPieces[i].Get_edges());
+        //}
+        //Debug.Log("edges pre-existing: " + edges.Count);
+
         // A
         edges.Add(new Edge(new Vector3(3.9f, 1.9f, 0.0f), new Vector3(3.7f, 1.9f, 0.0f)));
         edges.Add(new Edge(new Vector3(3.7f, 1.9f, 0.0f), new Vector3(3.1f, 1.7f, 0.0f)));
@@ -73,9 +85,25 @@ public class PentagramPuzzle : Puzzle {
 
         RecalculatePieces();
 
+        AddCutsOnUnconnected();
+
+        edges[0].Delete_cut_b();
+        edges[1].Delete_cut_a();
+        edges[2].Delete_cut_b();
+
         for (int i = 0; i < pieces.Count; i++)
         {
             pieces[i].CreatePieceObject().gameObject.transform.SetParent(transform);
         }
+
+        for (int i = 0; i < 3; i++)
+        {
+            pieces[i].SetCore();
+        }
+    }
+
+    void ConfigurePipePhysics()
+    {
+        Debug.Log("pentagram config physics");
     }
 }
